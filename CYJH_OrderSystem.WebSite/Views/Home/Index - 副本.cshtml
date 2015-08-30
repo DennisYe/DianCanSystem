@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "点餐系统";
+}
+
+<script type="text/javascript">   
+    var menuId=@ViewBag.CurrentMenu.Id;
+</script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="Stylesheet" href="../../Content/css/bootstrap.min.css" />
+    <style type="text/css">
+        .boder1 {
+            border-left: 1px solid #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron" style="background-color: #428bca;">
+            <h1><p class="text-center" style="color:white">小小点餐工具</p></h1>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <ul class="nav nav-pills nav-stacked" style="max-width:200px;" id="menuNav">
+                @{
+                    foreach (var menu in ViewBag.RestaurantList) {
+                        <li class="" id="@menu.Id"><a href="javascript:void(0);">@menu.RestaurantName</a></li>
+                    }
+                }
+                </ul>
+            </div>
+            <div class="col-lg-10 boder1" >
+                <div class="col-lg-7">
+                    <div class="panel panel-primary ">
+
+                        <div class="panel-heading">
+                            <h4>4小时内的订单情况：</h4>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>创建者</th>
+                                <th>创建时间</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var order in @ViewBag.OrderIn4Hours) {
+                                    <tr>
+                                        <td>@order.CreateName</td>
+                                        <td>@order.CreateTime</td>
+                                        <td><a href="/Home/Order/@order.Id">进入 》</a></td>
+                                    </tr>
+                                }
+
+                                if (@ViewBag.OrderIn4Hours.Count < 1) {
+                                    <tr style="background-color: #ebccd1">
+                                        <td></td>
+                                        <td>目前还没有订单,<a href="#" onclick="CreateOrder();">创建订餐贴 >></a></td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-lg-5">
+                    <div class="jumbotron" style="background-color: #ebccd1">
+                        <button class="btn btn-primary pull-right" onclick="CreateOrder()">订餐贴 >></button>
+                        <h3>@ViewBag.CurrentMenu.RestaurantName</h3>
+                        <p>电话：@ViewBag.CurrentMenu.Phone</p>
+                        <p>地址：@ViewBag.CurrentMenu.Address</p>
+                    </div>
+                </div>
+            </div>
+            
+
+
+          
+            
+        </div>
+        
+    </div>
+    
+
+    <script src="../../Content/js/jquery-1.10.2.min.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
+    <script src="../../Content/js/cookieoperation.js"></script>
+    <script src="../../Content/js/index.js"></script>
+</body>
+</html>

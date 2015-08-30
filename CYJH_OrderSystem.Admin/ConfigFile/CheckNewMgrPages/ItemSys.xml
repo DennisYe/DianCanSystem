@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CheckNewMgrPages>
+    <!--检测新页面地址配置-->
+    <!--CheckNewMgrPages目录下加的其他xml文件同样会被识别-->
+    <Item Type="Impl">
+        <Name><![CDATA[Mgr目录下新aspx文件检测]]></Name>
+        <Impl><![CDATA[CYJH_OrderSystem.Admin.Base.Bll.ImplCheckMgrDirNewPages]]></Impl>
+    </Item>
+</CheckNewMgrPages>

@@ -1,0 +1,35 @@
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\ResolveAssemblyReference.cache
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.BLL.dll
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.BLL.pdb
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.DAL.dll
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.Model.dll
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\Safe.Base.DbHelper.dll
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\Shared.dll
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.DAL.pdb
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.Model.pdb
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\Safe.Base.DbHelper.xml
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\bin\Shared.xml
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.dll
+F:\professional C#\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.pdb
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.BLL.dll
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.BLL.pdb
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.DAL.dll
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.Model.dll
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.DAL.pdb
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.Model.pdb
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\Safe.Base.DbHelper.xml
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\Shared.xml
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.csprojResolveAssemblyReference.cache
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.dll
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.pdb
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.BLL.dll
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.BLL.pdb
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.DAL.dll
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.Model.dll
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.DAL.pdb
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\CYJH_OrderSystem.Model.pdb
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\Safe.Base.DbHelper.xml
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\bin\Shared.xml
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\ResolveAssemblyReference.cache
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.dll
+F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.BLL\obj\Debug\CYJH_OrderSystem.BLL.pdb

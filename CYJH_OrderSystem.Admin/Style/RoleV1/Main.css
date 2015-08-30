@@ -1,0 +1,71 @@
+﻿@charset "utf-8";
+html,body{margin:0;padding:0;font-size:12px;}
+h3{margin:0;padding:0;color:#000;font-size:18px;border-left:1px solid #DDE4EA;border-bottom:1px solid #DDE4EA;margin-left:5px;padding:5px;background:#eee;}
+ul,li{padding:0;margin:0;list-style:none;}
+.Clear{clear:both;}
+
+.Tools{height:30px;line-height:30px;text-align:right;padding-right:20px;}
+.Btn{padding:3px 5px;border:1px solid #777;background:#DDE4EA;margin-right:10px;color:#000;text-decoration:none;}
+.Btn:hover{background:#fff;}
+.BtnMini{padding:0;font-size:11px;background-color:transparent;border:none;cursor:pointer;}
+.BtnMini:hover{text-decoration:underline;}
+.BtnMini:active{color:#f00;}
+.BtnEdit { padding-left:18px;background:url(Images/BtnEdit.png) no-repeat left;}
+.BtnDelete { padding-left:18px;background:url(Images/BtnDelete.png) no-repeat left;}
+.BtnLink { padding-left:18px;background:url(Images/BtnLink.png) no-repeat left;}
+.BtnAdd { padding-left:18px;background:url(Images/BtnAdd.png) no-repeat left;}
+.BtnImport { padding-left:18px;background:url(Images/BtnImport.png) no-repeat left;}
+.BtnExport { padding-left:18px;background:url(Images/BtnExport.png) no-repeat left;}
+
+.Wrap { min-height:800px;}
+
+.Pages{background:url(Images/TreeBg.jpg) left top repeat;}
+.PageItem{margin-left:15px;background:url(Images/Icons.png) repeat-y -90px 0;}
+.PageItemLast{background:transparent;}
+.PageItemHover{}
+.PageTypeShow{}
+.PageTypeHide{color:#999;}
+.PageTypeHide .BtnByShowPage{display:none;}
+.PageTitle{height:18px;line-height:18px;}
+.PageTitleHover,.PageTitleCurr{text-shadow:2px 2px 2px silver;}
+.ProcRight{display:none;margin-left:30px;}
+.PageTitleHover .ProcRight,.PageTitleCurr .ProcRight{display:inline;}
+.Pages ins { float:left;background:transparent url(Images/Icons.png) no-repeat;padding:0;margin:0;width:18px;height:18px;display:inline-block;text-decoration:none; }
+.Pages span { float:left;height:18px;line-height:18px;margin-right:5px; }
+.Pages ins.PageItemIcon { background-position:-36px 0;}
+.Pages ins.PageItemIconOpen { background-position:-72px 0;}
+.Pages ins.PageItemIconClose { background-position:-54px 0;}
+
+.FloatEmptyDiv{display:none;}
+.FloatDiv{display:none;border:1px solid #000;background:#DDE4EA;}
+.FloatTitle{height:20px;line-height:20px;text-align:left;padding:3px 10px;}
+.FloatTitle span{font-weight:bold;}
+.FloatClose{float:right;}
+.FloatCnt{padding:10px;line-height:25px;}
+
+.TabNames{height:25px;}
+.TabNames li{float:left;}
+.TabNames li a{padding:3px 5px;border-bottom:1px solid #777;text-decoration:none;color:#888;}
+.TabNames li a:hover{color:#666;}
+.TabNames li.Onthis a{color:#000;border:none;border-top:1px solid #777;border-left:1px solid #777;border-right:1px solid #777;}
+.TabNames li.Onthis a:hover{color:#000;}
+.TabCnt{display:none;height:550px;}
+
+.FloatScrollCnt{max-height:500px;overflow:auto;border:1px solid #777;}
+.CkNewPageInfo{border-bottom:1px solid #aaa;display:none;}
+
+.DisabledShowTxt{display:none;}
+.Disabled .Btn{display:none;}
+.Disabled .DisabledShowTxt{display:inline;}
+.Disabled .DisabledShowTxt .Btn{display:inline;}
+
+.Loading{background:url(Images/LoadingSprites.png) no-repeat;width:50px;height:50px;margin:0 auto;}
+
+.Inp { width:400px;}
+
+.ProcTitleTxt { padding:10px;}
+.ProcCnt{text-align:right;}
+.ProcCnt .Btn{margin:10px;}
+
+
+.Childs { padding-left:10px;}

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config NoRule="NoRule.aspx">
+    <!--系统配置:不需要权限验证的URL-->
+    <!--所有路径统一使用<从应用程序目录>开始的相对路径,支持配置目录-->
+    <Page Url="NoRule.aspx"></Page>
+    <Page Url="Main.aspx"></Page>
+    <Page Url="Logout.aspx"></Page>
+    <Page Url="ConServer/CheckUser.aspx"></Page>
+    <Page Url="Jump.aspx"></Page>
+    <Page Url="GateWay.aspx"></Page>
+    <Page Url="Role/IfrPageInfoEditor.aspx"></Page>
+    <Page Url="Left.aspx"></Page>
+    <Page Url="Right.aspx"></Page>
+    <Page Url="ImageCode.aspx"></Page>
+    <Page Url="Activity/TqPrizeCard.aspx"></Page>
+    <Page Url="Role/IfrAdminEditor.aspx"></Page>
+    <Page Url="MainIframeLeft.aspx"></Page>
+    <Page Url="Welcome.html"></Page>
+</Config>

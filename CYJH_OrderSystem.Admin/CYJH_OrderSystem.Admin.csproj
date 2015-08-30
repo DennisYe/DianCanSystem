@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1076B23C-2EC3-496F-9A77-BB79EA316696}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CYJH_OrderSystem.Admin</RootNamespace>
+    <AssemblyName>CYJH_OrderSystem.Admin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Safe.Base.DbHelper">
+      <HintPath>..\..\..\SubSystem\SubSystem\Bin\Safe.Base\V2\Safe.Base.DbHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Shared">
+      <HintPath>..\..\..\SubSystem\SubSystem\Bin\Shared\DLL\Release\Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="ZAuthentication">
+      <HintPath>..\..\..\SubSystem\SubSystem\Bin\ZAuthentication\V2\DLL\Release\ZAuthentication.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConfigFile\CheckNewMgrPages\ItemSys.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ConfigFile\RoleSettingSys.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Role\PageList.aspx" />
+    <Content Include="Role\UserControl\ChkNewPages.ascx" />
+    <Content Include="Style\RoleV1\Images\BtnAdd.png" />
+    <Content Include="Style\RoleV1\Images\BtnDelete.png" />
+    <Content Include="Style\RoleV1\Images\BtnEdit.png" />
+    <Content Include="Style\RoleV1\Images\BtnExport.png" />
+    <Content Include="Style\RoleV1\Images\BtnImport.png" />
+    <Content Include="Style\RoleV1\Images\BtnLink.png" />
+    <Content Include="Style\RoleV1\Images\TreeBg.jpg" />
+    <Content Include="Style\RoleV1\Images\Icons.png" />
+    <Content Include="Style\RoleV1\Images\Loading.gif" />
+    <Content Include="Style\RoleV1\Images\LoadingSprites.png" />
+    <Content Include="Style\RoleV1\Main.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="TestPage.html" />
+    <Content Include="更新日志.txt" />
+    <Content Include="系统目录\初始化数据库\后台数据库初始化%28表,PROC,数据%29.sql" />
+    <Content Include="系统目录\自动更新后台\Cfg.xml" />
+    <Content Include="系统目录\自动更新后台\UpdateCom.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\AdminAppSetting.cs" />
+    <Compile Include="Base\AdminPageStatic.cs" />
+    <Compile Include="Base\Bll\AdminManage.cs" />
+    <Compile Include="Base\Bll\BAdmin.cs" />
+    <Compile Include="Base\Bll\BR_Admin.cs" />
+    <Compile Include="Base\Bll\BR_AdminRight.cs" />
+    <Compile Include="Base\Bll\BR_GroupRight.cs" />
+    <Compile Include="Base\Bll\BR_PageInfo.cs" />
+    <Compile Include="Base\Bll\BR_PageParent.cs" />
+    <Compile Include="Base\Bll\GroupManage.cs" />
+    <Compile Include="Base\Bll\ImplCheckNewMgrPages.cs" />
+    <Compile Include="Base\Bll\PageParent.cs" />
+    <Compile Include="Base\Bll\RoleManage.cs" />
+    <Compile Include="Base\Contract\Enums\EUpdateGroupArg.cs" />
+    <Compile Include="Base\Contract\Enums\EUpdatePwdReturn.cs" />
+    <Compile Include="Base\Contract\IAdmin.cs" />
+    <Compile Include="Base\Contract\IAdminManage.cs" />
+    <Compile Include="Base\Contract\ICheckNewMgrPages.cs" />
+    <Compile Include="Base\Contract\ICheckUserServer.cs" />
+    <Compile Include="Base\Contract\IGroupManage.cs" />
+    <Compile Include="Base\Contract\ILogin.cs" />
+    <Compile Include="Base\Contract\IMenusGetting.cs" />
+    <Compile Include="Base\Contract\IPageParent.cs" />
+    <Compile Include="Base\Contract\IRightsSetting.cs" />
+    <Compile Include="Base\Contract\IRoleCheck.cs" />
+    <Compile Include="Base\Contract\IRoleManage.cs" />
+    <Compile Include="Base\Dal\DAdmin.cs" />
+    <Compile Include="Base\Dal\DR_Admin.cs" />
+    <Compile Include="Base\Dal\DR_AdminRight.cs" />
+    <Compile Include="Base\Dal\DR_Group.cs" />
+    <Compile Include="Base\Dal\DR_GroupRight.cs" />
+    <Compile Include="Base\Dal\DR_PageInfo.cs" />
+    <Compile Include="Base\Dal\DR_PageParent.cs" />
+    <Compile Include="Base\Dal\SQLHelpers.cs" />
+    <Compile Include="Base\Factory\GetInterface.cs" />
+    <Compile Include="Base\LangPack\AdminCollect.cs" />
+    <Compile Include="Base\Model\MRole_Admin.cs" />
+    <Compile Include="Base\Model\MR_Admin.cs" />
+    <Compile Include="Base\Model\MR_AdminRight.cs" />
+    <Compile Include="Base\Model\MR_Group.cs" />
+    <Compile Include="Base\Model\MR_GroupRight.cs" />
+    <Compile Include="Base\Model\MR_PageInfo.cs" />
+    <Compile Include="Base\Model\MR_PageParent.cs" />
+    <Compile Include="Base\SiteRuleCheck.cs" />
+    <Compile Include="ConServer\CheckUser.aspx.cs">
+      <DependentUpon>CheckUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConServer\CheckUser.aspx.designer.cs">
+      <DependentUpon>CheckUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConServer\IsOnline.aspx.cs">
+      <DependentUpon>IsOnline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConServer\IsOnline.aspx.designer.cs">
+      <DependentUpon>IsOnline.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GateWay.aspx.cs">
+      <DependentUpon>GateWay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GateWay.aspx.designer.cs">
+      <DependentUpon>GateWay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Left.aspx.cs">
+      <DependentUpon>Left.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Left.aspx.designer.cs">
+      <DependentUpon>Left.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NoRule.aspx.cs">
+      <DependentUpon>NoRule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoRule.aspx.designer.cs">
+      <DependentUpon>NoRule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Role\AdminList.aspx.cs">
+      <DependentUpon>AdminList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\AdminList.aspx.designer.cs">
+      <DependentUpon>AdminList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\FastAddAdmin.aspx.cs">
+      <DependentUpon>FastAddAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\FastAddAdmin.aspx.designer.cs">
+      <DependentUpon>FastAddAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\GroupList.aspx.cs">
+      <DependentUpon>GroupList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\GroupList.aspx.designer.cs">
+      <DependentUpon>GroupList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\IfrAdminEditor.aspx.cs">
+      <DependentUpon>IfrAdminEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\IfrAdminEditor.aspx.designer.cs">
+      <DependentUpon>IfrAdminEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\IfrPageInfoEditor.aspx.cs">
+      <DependentUpon>IfrPageInfoEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\IfrPageInfoEditor.aspx.designer.cs">
+      <DependentUpon>IfrPageInfoEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\PageList.aspx.cs">
+      <DependentUpon>PageList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\PageList.aspx.designer.cs">
+      <DependentUpon>PageList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\RoleManage.aspx.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\RoleManage.aspx.designer.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\UserControl\ChkNewPages.ascx.cs">
+      <DependentUpon>ChkNewPages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role\UserControl\ChkNewPages.ascx.designer.cs">
+      <DependentUpon>ChkNewPages.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ConServer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConfigFile\Web.config" />
+    <Content Include="ConServer\CheckUser.aspx" />
+    <Content Include="ConServer\IsOnline.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConServer\Web.config" />
+    <Content Include="css\all.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\thickbox.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\images\icon_5.gif" />
+    <Content Include="css\Web.config" />
+    <Content Include="Images\act_btn.gif" />
+    <Content Include="Images\add-icon.gif" />
+    <Content Include="Images\arrow.gif" />
+    <Content Include="Images\bar9.gif" />
+    <Content Include="Images\bg-center-column.jpg" />
+    <Content Include="Images\bg-dotted.gif" />
+    <Content Include="Images\bg-footer.gif" />
+    <Content Include="Images\bg-header.gif" />
+    <Content Include="Images\bg-left-header.gif" />
+    <Content Include="Images\bg-left-link.gif" />
+    <Content Include="Images\bg-middle.gif" />
+    <Content Include="Images\bg-orange-button.gif" />
+    <Content Include="Images\bg-select.gif" />
+    <Content Include="Images\bg-th-left.gif" />
+    <Content Include="Images\bg-th-right.gif" />
+    <Content Include="Images\calendar.gif" />
+    <Content Include="Images\closed.gif" />
+    <Content Include="Images\edit-icon.gif" />
+    <Content Include="Images\home.gif" />
+    <Content Include="Images\hr.gif" />
+    <Content Include="Images\L.gif" />
+    <Content Include="Images\left_tt.gif" />
+    <Content Include="Images\loadingAnimation.gif" />
+    <Content Include="Images\login-icon.gif" />
+    <Content Include="Images\login_1.gif" />
+    <Content Include="Images\login_2.gif" />
+    <Content Include="Images\login_3.gif" />
+    <Content Include="Images\login_4.gif" />
+    <Content Include="Images\login_5.gif" />
+    <Content Include="Images\login_6.gif" />
+    <Content Include="Images\logo.gif" />
+    <Content Include="Images\on-of.gif" />
+    <Content Include="Images\Rect.gif" />
+    <Content Include="Images\RectNoColor.gif" />
+    <Content Include="Images\save-icon.gif" />
+    <Content Include="Images\tab-active-left.gif" />
+    <Content Include="Images\tab-active-right.gif" />
+    <Content Include="Images\tab-active.gif" />
+    <Content Include="Images\tab-left.gif" />
+    <Content Include="Images\tab-right.gif" />
+    <Content Include="Images\tab.gif" />
+    <Content Include="Images\tableline.jpg" />
+    <Content Include="Images\tableline_bottom.jpg" />
+    <Content Include="Images\tableline_top.jpg" />
+    <Content Include="Images\tablemde.jpg" />
+    <Content Include="Images\tdbj.gif" />
+    <Content Include="Images\tip.gif" />
+    <Content Include="Images\top.jpg" />
+    <Content Include="Images\top_bg.jpg" />
+    <Content Include="Images\top_logo.jpg" />
+    <Content Include="Images\top_tt_bg.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GateWay.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\jia.gif" />
+    <Content Include="Images\jian.gif" />
+    <Content Include="Images\Web.config" />
+    <Content Include="js\autoResizeIframe.js" />
+    <Content Include="js\childuseonly.js" />
+    <Content Include="js\comm.js" />
+    <Content Include="js\jq.elian.dropdownlist.js" />
+    <Content Include="js\jq.fn.ext.js" />
+    <Content Include="js\jq.imgsort.js" />
+    <Content Include="js\jq.StatToolOrder.js" />
+    <Content Include="js\jquery-1.4.1-vsdoc.js" />
+    <Content Include="js\jquery.base.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\thickbox.js" />
+    <Content Include="js\Utility.js" />
+    <Content Include="js\ValueChecked.js" />
+    <Content Include="Left.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="Main.aspx" />
+    <Content Include="My97DatePicker\calendar.js" />
+    <Content Include="My97DatePicker\config.js" />
+    <Content Include="My97DatePicker\lang\en.js" />
+    <Content Include="My97DatePicker\lang\zh-cn.js" />
+    <Content Include="My97DatePicker\lang\zh-tw.js" />
+    <Content Include="My97DatePicker\My97DatePicker.htm" />
+    <Content Include="My97DatePicker\skin\datePicker.gif" />
+    <Content Include="My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="My97DatePicker\skin\default\img.gif" />
+    <Content Include="My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="My97DatePicker\WdatePicker.js" />
+    <Content Include="NoRule.aspx" />
+    <Content Include="Welcome.html" />
+    <Content Include="使用说明.txt" />
+    <Content Include="Role\AdminList.aspx" />
+    <Content Include="Role\FastAddAdmin.aspx" />
+    <Content Include="Role\GroupList.aspx" />
+    <Content Include="Role\IfrAdminEditor.aspx" />
+    <Content Include="Role\IfrPageInfoEditor.aspx" />
+    <Content Include="Role\RoleManage.aspx" />
+    <None Include="Properties\PublishProfiles\Web.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConServer\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConServer\TcAdminChkol.disco" />
+    <None Include="Web References\ConServer\TcAdminChkol.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://220.162.238.234:8383/ConServer/TcAdminChkol.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ConServer\</RelPath>
+      <UpdateFromURL>http://220.162.238.234:8383/ConServer/TcAdminChkol.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TcUserReport_Admin_ConServer_TcAdminChkol</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mgr\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19399</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:19399/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

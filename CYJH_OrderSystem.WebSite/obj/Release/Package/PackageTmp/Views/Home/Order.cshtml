@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "点餐系统";
+}
+<script type="text/javascript">
+    var orderId=@ViewBag.OrderId;
+</script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../Content/js/html5shiv.min.js"></script>
+      <script src="../../Content/js/respond.min.js"></script>
+      <script src="../../Content/js/modernizr.js"></script>
+    <![endif]-->
+
+
+    <link rel="Stylesheet" href="../../Content/css/bootstrap.min.css" />
+    <!--[if lt IE 9]>
+         <link rel="Stylesheet" href="../../Content/css/cssforIE.css" />
+    <![endif]-->
+
+    <style>
+        .header {
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 30px;
+        }
+        .orderBy{
+            margin-bottom:30px;
+        }
+        .drawLine {
+            border-bottom: 1px solid white;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="header">
+                    <ul class="nav pull-right">
+                        <li class="active"><a href="/Home/Index"><< 返回主页</a></li>
+                        <li><a href="javascript:void(0)" onclick="UserLogin();" id="logUserName"></a></li>
+                    </ul>
+                    <div class="orderBy">
+                        <h4><i>@ViewBag.OrderInfo.CreateName</i> 的订单</h4>
+                        <h4>建于 @ViewBag.OrderInfo.CreateTime</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="alert alert-warning"><strong style="color:red">！请把本页地址发给组内小伙伴们，小伙伴将会在当前订单内点餐</strong></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <ul class="nav nav-tabs" id="navtab">
+                    @{
+                        int index=1;
+                        foreach (var category in @ViewBag.CategoryList)
+                        {
+                            if(index++==1)
+                            {
+                                <li class="active"><a href="javascript:void(0);" id="category@{@category.Id}">@category.Name</a></li> 
+                            }
+                            else{
+                                <li class=""><a href="javascript:void(0);" id="category@{@category.Id}">@category.Name</a></li> 
+                            }
+                        }
+                     }   
+                     <a class="btn btn-primary pull-right" href="javascript:void(0);" onclick="AddOrderItem();">添加</a>                     
+                </ul>
+                
+                <table class="table table-hover" id="menudetail">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>菜名</th>
+                            <th>价格(元)</th>
+                            <th>数量</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @{
+                        foreach (var category in @ViewBag.CategoryList)
+                        {
+                            <tbody class="category@{@category.Id}">
+                                @{
+                                    var menuInCategory = ((List<CYJH_OrderSystem.Model.Food>)@ViewBag.MenuDetailList).FindAll(o => o.CategoryId == @category.Id);
+                                    foreach (var food in menuInCategory)
+                                      {
+                                         <tr>
+                                            <td><input type="checkbox" value="@food.Id" /></td>
+                                            <td>@food.Name</td>
+                                            <td>@food.Price</td>
+                                             <td><input type="text" class="amount" style="width:25px" value="1" /></td>
+                                            <td><a href="javascript:void(0);" class="foodcomment">备注</a></td>
+                                         </tr>
+                                      }
+                                }
+                            </tbody>
+                        }
+                         
+                     }                 
+                </table>
+                <a class="btn btn-primary pull-right" href="javascript:void(0);" onclick="AddOrderItem();">添加</a>   
+            </div>
+            <div class="col-lg-5">
+                
+                <div class="panel panel-danger " id="statisticsHead">                    
+                    <div class="panel-heading">                      
+                        <h3>@ViewBag.CurrentMenu.RestaurantName</h3>
+                        <p>电话：@ViewBag.CurrentMenu.Phone</p>
+                        <p>地址：@ViewBag.CurrentMenu.Address</p>
+                        <div class="drawLine"></div>
+                        订单详情:
+                    </div>
+                    <div class="">
+                        <table class="table table-hover" id="orderItemListTbl">
+                            <thead>
+                                <tr>
+                                    <th>同学</th>
+                                    <th>菜名</th>
+                                    <th>价格</th>
+                                    <th>数量</th>
+                                    <th>备注</th>
+                                    <th>时间</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var orderItem in @ViewBag.OrderItemList) {
+                                        <tr>
+                                            <td class="userName">@orderItem.UserName</td>
+                                            <td class="foodName">@orderItem.FoodName</td>
+                                            <td class="foodPrice">@orderItem.FoodPrice</td>
+                                            <td class="amount">@orderItem.Amount</td>
+                                            <td>@orderItem.Comment</td>
+                                            <td>@orderItem.CreateTime</td>
+                                            <td id="@orderItem.Id"><button type="button" class="close" aria-hidden="true" onclick="DeleteFood(@orderItem.Id);">&times;</button></td>
+                                            <td class="belongCate" style="display:none">@orderItem.BelongCate</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="panel-footer">
+                            @*统计：<span class="pull-right" id="summary"></span><br />*@
+                            
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                统计
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <span class="pull-right" id="summary"></span><br />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                参与人员
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <span id="participants"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                菜样统计
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>        
+    </div>
+    
+
+    <script src="../../Content/js/jquery-1.10.2.min.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
+    <script src="../../Content/js/cookieoperation.js"></script>
+    <script src="../../Content/js/jsondefine.js"></script>
+    <script src="../../Content/js/order.js"></script>
+</body>
+</html>

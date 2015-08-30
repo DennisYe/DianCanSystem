@@ -1,0 +1,2279 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shared</name>
+    </assembly>
+    <members>
+        <member name="M:Shared.XMLEditor.AppendElement(System.Xml.XmlNode@,System.String)">
+            <summary>
+            为节点添加一个子节点，返回这个子节点
+            </summary>
+            <param name="node"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.XMLEditor.AppendElement(System.Xml.XmlNode@,System.String,System.String)">
+            <summary>
+            为节点添加一个子节点，返回这个子节点
+            </summary>
+            <param name="node"></param>
+            <param name="name"></param>
+            <param name="innerText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.XMLEditor.AppendCDATA(System.Xml.XmlNode@,System.String)">
+            <summary>
+            为节点添置 CDATA 段 
+            </summary>
+            <param name="node"></param>
+            <param name="innerText"></param>
+        </member>
+        <member name="M:Shared.XMLEditor.AppendAttribute(System.Xml.XmlNode@,System.String,System.String)">
+            <summary>
+            为节点添加属性
+            </summary>
+            <param name="node"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Shared.XMLEditor.CreateNewDocument">
+            <summary>
+            创建一个新的XML 返回根节点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.XMLEditor.LoadDocument">
+            <summary>
+            读取文档
+            </summary>
+        </member>
+        <member name="M:Shared.XMLEditor.SaveDocument">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="T:Shared.OrderBy">
+            <summary>
+            排序的字段
+            </summary>
+        </member>
+        <member name="M:Shared.OrderBy.#ctor">
+            <summary>
+            
+            </summary>
+            <param name="name">字段中文名</param>
+            <param name="isAsc"></param>
+        </member>
+        <member name="M:Shared.OrderBy.#ctor(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="name">字段中文名</param>
+            <param name="isAsc"></param>
+        </member>
+        <member name="M:Shared.OrderBy.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="tableAliasName">表（别）名</param>
+            <param name="name">字段中文名</param>
+            <param name="isAsc"></param>
+        </member>
+        <member name="M:Shared.OrderBy.ToSql(System.Boolean)">
+            <summary>
+            输出sql语句段
+            </summary>
+            <param name="reIsAsc">是否相反当前的排序方式</param>
+            <returns></returns>
+        </member>
+        <member name="P:Shared.OrderBy.Name">
+            <summary>
+            排序的字段名,如果多表,字段名中需要包含表名部分
+            </summary>
+        </member>
+        <member name="P:Shared.OrderBy.TableAliasName">
+            <summary>
+            表（别）名(为空则不输出)
+            </summary>
+        </member>
+        <member name="P:Shared.OrderBy.IsAsc">
+            <summary>
+            是否升序
+            </summary>
+        </member>
+        <member name="T:Shared.OrderByExtend">
+            <summary>
+            排序的字段拓展
+            </summary>
+        </member>
+        <member name="M:Shared.OrderByExtend.ToOrderBy(System.Enum,System.Boolean)">
+            <summary>
+            排序枚举快速获得排序对象
+            </summary>
+            <param name="enumObj"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.OrderByExtend.ToOrderBy(System.Enum,System.String,System.Boolean)">
+            <summary>
+            排序枚举快速获得排序对象
+            </summary>
+            <param name="enumObj"></param>
+            <param name="tableAliasName">表（别）名</param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.OrderByExtend.Union(Shared.OrderBy,Shared.OrderBy)">
+            <summary>
+            联合其他OrderBy对象,得到OrderBy数组
+            </summary>
+            <param name="orderBy"></param>
+            <param name="unionOrderBy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.OrderByExtend.Union(Shared.OrderBy[],Shared.OrderBy)">
+            <summary>
+            联合其他OrderBy对象,得到OrderBy数组
+            </summary>
+            <param name="orderByArr"></param>
+            <param name="unionOrderBy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.OrderByExtend.Union(Shared.OrderBy[],Shared.OrderBy[])">
+            <summary>
+            联合其他OrderBy对象数组,得到OrderBy数组
+            </summary>
+            <param name="orderByArr"></param>
+            <param name="unionOrderByArr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.OrderByExtend.Union(Shared.OrderBy,Shared.OrderBy[])">
+            <summary>
+            联合其他OrderBy对象数组,得到OrderBy数组
+            </summary>
+            <param name="orderByArr"></param>
+            <param name="unionOrderByArr"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.SQLPager">
+            <summary>
+            v2.0
+            </summary>
+        </member>
+        <member name="M:Shared.SQLPager.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="tableName">单纯的主表名</param>
+            <param name="aliasTName">如果有多表连接,那么该项就作为别名,无可为空</param>
+            <param name="primaryKey">主表主键名</param>
+            <param name="fromSqlApp">多表连接的语句段,将放在"from tableName 别名 "的后方,无可为空</param>
+            <param name="whereSql">条件语句,无需where关键字</param>
+            <param name="orderBySql">排序语句块,多表连接时,支持多表多字段排序</param>
+        </member>
+        <member name="M:Shared.SQLPager.GetCountSQL">
+            <summary>
+            获得总页数的SQL语句
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SQLPager.GetSumSQL(System.String)">
+            <summary>
+            获得数据总和的SQL语句
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SQLPager.GetPagerSql(System.Int32,System.Int32,System.Int64,System.String,Shared.OrderBy[])">
+            <summary>
+            获得分页的SQL语句(排序比较复杂的情况)
+            </summary>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">第几页</param>
+            <param name="dataCount">总数</param>
+            <param name="selectColumns">要select的字段列表</param>
+            <param name="hasLastOrder">是否需要最外面的那个order by语句段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SQLPager.GetPagerSql(System.Int32,System.Int32,System.Int64,System.String,Shared.OrderBy[],System.Boolean)">
+            <summary>
+            获得分页的SQL语句(排序比较复杂的情况)
+            </summary>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">第几页</param>
+            <param name="dataCount">总数</param>
+            <param name="selectColumns">要select的字段列表</param>
+            <param name="hasLastOrder">按这个排序分完页后的列表,是否还需要再按这个再次排序,一般是true,但是如果要把生成的语句再次作为一个子查询的sql,要为false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SQLPager.GetPagerSql(System.Int32,System.Int32,System.Int64,System.String,System.Boolean,Shared.OrderBy[])">
+            <summary>
+            获得分页的SQL语句(排序比较复杂的情况)
+            </summary>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">第几页</param>
+            <param name="dataCount">总数</param>
+            <param name="selectColumns">要select的字段列表</param>
+            <param name="hasLastOrder">按这个排序分完页后的列表,是否还需要再按这个再次排序,一般是true,但是如果要把生成的语句再次作为一个子查询的sql,要为false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SQLPager.GetPagerSql(System.Int32,System.Int32,System.Int64,System.String,System.String,System.Boolean)">
+            <summary>
+            [否决的，“string orderBySql”已经被“OrderBy[] orderBySql”代替]获得分页的SQL语句
+            </summary>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">第几页</param>
+            <param name="dataCount">总数</param>
+            <param name="selectColumns">要select的字段列表</param>
+            <param name="hasLastOrder">按这个排序分完页后的列表,是否还需要再按这个再次排序,一般是true,但是如果要把生成的语句再次作为一个子查询的sql,要为false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SQLPager.GetPagerSql(System.Int32,System.Int32,System.Int64,System.String,System.String)">
+            <summary>
+            [否决的，“string orderBySql”已经被“OrderBy[] orderBySql”代替]获得分页的SQL语句
+            </summary>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">第几页</param>
+            <param name="dataCount">总数</param>
+            <param name="selectColumns">要select的字段列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.UploadFiles.Upload(System.String,System.Web.HttpPostedFile,System.String[],System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <param name="file"></param>
+            <param name="extList">如 .jpg|.gif|.png</param>
+            <param name="errMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.TripleDES.TripleDESEncrypt(System.String,System.String,System.String)">
+            <summary>
+            3DES加密24位填充类型为0字节
+            </summary>
+            <param name="encryptSource">加密的数据源</param>
+            <param name="encryptKey">加密的密匙</param>
+            <param name="encryptIV">加密的矢量</param>
+            <returns>加密串</returns>
+        </member>
+        <member name="M:Shared.TripleDES.TripleDESEncrypt(System.String,System.String,System.String,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            3DES加密24位自定填充类型
+            </summary>
+            <param name="encryptSource">加密的数据源</param>
+            <param name="encryptKey">加密的密匙</param>
+            <param name="encryptIV">加密的矢量</param>
+            <param name="paddingMode">填充类型</param>
+            <returns>加密串</returns>
+        </member>
+        <member name="M:Shared.TripleDES.TripleDESEncrypt(System.String,System.String,System.String,System.Security.Cryptography.PaddingMode,System.Int32,System.String)">
+            <summary>
+            3DES加密自定义字节位填充类型
+            </summary>
+            <param name="encryptSource">加密的数据源</param>
+            <param name="encryptKey">加密的密匙</param>
+            <param name="encryptIV">加密的矢量</param>
+            <param name="paddingMode">自定义填充类型</param>
+            <param name="byteNum">自定义字节数</param>
+            <param name="outType">输出字节形式ToHex16,ToBase64</param>
+            <returns>加密串</returns>
+        </member>
+        <member name="M:Shared.TripleDES.TripleDESDecrypt(System.String,System.String,System.String)">
+            <summary>
+            3DES解密24位Zeros填充
+            </summary>
+            <param name="decryptSource">解密的数据源</param>
+            <param name="decryptKey">解密的密匙</param>
+            <param name="decryptIV">解密的矢量</param>
+            <returns>解密串</returns>
+        </member>
+        <member name="M:Shared.TripleDES.TripleDESDecrypt(System.String,System.String,System.String,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            3DES解密24位自定义填充类型
+            </summary>
+            <param name="decryptSource">解密的数据源</param>
+            <param name="decryptKey">解密的密匙</param>
+            <param name="decryptIV">解密的矢量</param>
+            <param name="paddingMode">填充类型</param>
+            <returns>解密串</returns>
+        </member>
+        <member name="M:Shared.TripleDES.TripleDESDecrypt(System.String,System.String,System.String,System.Security.Cryptography.PaddingMode,System.Int32,System.String)">
+            <summary>
+            3DES解密
+            </summary>
+            <param name="decryptSource">解密的数据源</param>
+            <param name="decryptKey">解密的密匙</param>
+            <param name="decryptIV">解密的矢量</param>
+            <param name="paddingMode">填充模式</param>
+            <param name="byteNum">字节</param>
+             <param name="outType">解密字节形式ToHex16,ToBase64</param>
+            <returns>解密串</returns>
+        </member>
+        <member name="F:Shared.TripleDES.HexDigits">
+            <summary>
+            字符
+            </summary>
+        </member>
+        <member name="M:Shared.TripleDES.ToHexString(System.Byte[])">
+            <summary>
+            将字节数组转换为字符串
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.TripleDES.ConvertHexToBytes(System.String)">
+            <summary>
+            将进制字符串转化为字节数组
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetRound(System.Object,System.Int32,System.Boolean,System.Double)">
+            <summary>
+            将浮点型数值保留几位小数
+            </summary>
+            <param name="obj">原始值</param>
+            <param name="count">保留几位小数</param>
+            <param name="isRounding">是否四舍五入</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetLong(System.Object,System.Int64,System.Boolean)">
+            <summary>
+            从对象中取得long数据
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <param name="defaultValue">默认值</param>
+            <param name="isCatch">是否处理异常</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetInt(System.Object,System.Int32,System.Boolean)">
+            <summary>
+            从对象中取得int数据
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <param name="defaultValue">默认值</param>
+            <param name="isCatch">是否处理异常</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetInt(System.Object)">
+            <summary>
+            从对象中取得int数据
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetDecimal(System.Object)">
+            <summary>
+            从对象中取得decimal数据 取不到时,解析错误时,返回 null
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.ToCutDecimal(System.Double,System.Int32)">
+            <summary>
+            保留小数位(不四舍五入,直接截取)
+            </summary>
+            <param name="fval"></param>
+            <param name="decCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.isDbNullOrNull(System.Object)">
+            <summary>
+            判断对象是否是空
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetSignNum(System.Object)">
+            <summary>
+            转为数值并且带上正负符号
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetQuesyString(System.Collections.Specialized.NameValueCollection,System.Text.Encoding)">
+            <summary>
+            将名值对象转换为查询字符串
+            </summary>
+            <param name="nameValues"></param>
+            <param name="encode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetQuesyString(System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding)">
+            <summary>
+            将名值对象转换为查询字符串
+            </summary>
+            <param name="nameValues"></param>
+            <param name="encode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.SerializeToString(System.Object)">
+            <summary>
+            序列化对象为字符串(和DeserializeObject对应),出错会抛出
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.SerializeToFile(System.Object,System.String)">
+            <summary>
+            序列化对象到文件(和DeserializeObjectFromFile对应),出错会抛出
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.JoinString(System.Collections.IEnumerable,System.String)">
+            <summary>
+            将列表的所有元素连接为字符串
+            </summary>
+            <param name="list"></param>
+            <param name="spStr">连接分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.CloneObject(System.Object)">
+            <summary>
+            深度拷贝对象,注意:该类必须标记为可序列化[Serializable]!!!
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.ListNoNull``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            如果List为空,则创建一个空内容的List
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetJSON(System.Object)">
+            <summary>
+            json序列化(使用内置实现)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.JSONDeserialize``1(System.String)">
+            <summary>
+            json反序列化(使用内置实现)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jsonString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GetJSON(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            json序列化(使用内置实现)
+            </summary>
+            <param name="nv">NameValueCollection</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ObjectExtend.GeZD(System.Byte[],System.String)">
+            <summary>
+            ZD加密(类似MD5,不可逆,任何一位更改返回值就不同,结果是32个字符)
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.TSerialize`1">
+            <summary>
+            貌似已经废弃
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Shared.TSerialize`1.SerializeToString(`0)">
+            <summary>
+            把对象转换成字符串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.TSerialize`1.DeserializeObject(System.String)">
+            <summary>
+            把字符串反序列化成对象
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.StaticFunctions">
+            <summary>
+            公用静态方法
+            </summary>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetCurrApplicationUrl">
+            <summary>
+            获取当前应用程序所在的url,如果/BBX/为应用程序目录,那么获得http://***/BBX/这样的路径.否则就是根目录
+            </summary>
+            <returns></returns>
+            <example>
+            如果/BBX/为应用程序目录,那么获得http://***/BBX/这样的路径.否则就是根目录
+            </example>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetReUrlByCurrPage(System.String)">
+            <summary>
+            相对当前页面的URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.OutResourcePath(System.String,System.Boolean)">
+            <summary>
+            输出资源路径
+            </summary>
+            <param name="path">从当前应用程序目录开始的相对路径</param>
+            <param name="noExistThrow">如果文件不存在是否抛错</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.OutResourceRePath(System.String,System.Boolean)">
+            <summary>
+            输出资源路径
+            </summary>
+            <param name="path">相对页面地址的相对路径</param>
+            <param name="noExistThrow">如果文件不存在是否抛错</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetTimestamp(System.DateTime)">
+            <summary>
+            计算时间戳
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.ParseDateByTimestamp(System.Int64)">
+            <summary>
+            根据时间戳(长整型)得到时间对象
+            </summary>
+            <param name="tick"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetUserIp">
+            <summary>
+            取得用户IP
+            </summary>
+            <returns>用户IP</returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetClientRealIp">
+            <summary>
+            尽最大努力取得用户IP
+            </summary>
+            <returns>用户IP</returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.SetUserCookie(System.String,System.String)">
+            <summary>
+            设置COOKIES
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+            <param name="cookieValue"></param>
+        </member>
+        <member name="M:Shared.StaticFunctions.SetUserCookie(System.String,System.String,System.DateTime)">
+            <summary>
+             设置COOKIES
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+            <param name="cookieValue"></param>
+            <param name="expiredTime"></param>
+        </member>
+        <member name="M:Shared.StaticFunctions.SetUserCookie(System.String,System.String,System.DateTime,System.String)">
+            <summary>
+             设置COOKIES
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+            <param name="cookieValue"></param>
+            <param name="expiredTime"></param>
+            <param name="domain"></param>
+        </member>
+        <member name="M:Shared.StaticFunctions.SetUserCookie(System.String,System.String,System.DateTime,System.String,System.String)">
+            <summary>
+            设置COOKIES
+            </summary>
+            <param name="setCookieName"></param>
+            <param name="setDomain"></param>
+            <param name="setPath"></param>
+            <param name="setExpires"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.SetUserCookie(System.Web.HttpCookie,System.String,System.String)">
+            <summary>
+            设置COOKIES
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+            <param name="cookieValue"></param>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetUserCookie(System.String)">
+            <summary>
+            读取COOKIE
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetUserCookieValue(System.String)">
+            <summary>
+            读取COOKIE的值
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.ClearUserCookie(System.String)">
+            <summary>
+            删除COOKIE
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+        </member>
+        <member name="M:Shared.StaticFunctions.ClearUserCookie(System.String,System.String,System.String)">
+            <summary>
+            删除COOKIE
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+             <param name="domain"></param>
+              <param name="path"></param>
+        </member>
+        <member name="M:Shared.StaticFunctions.ClearUserCookie(System.String,System.String)">
+            <summary>
+            删除COOKIE
+            </summary>
+            <param name="cookieName">Cookies名称</param>
+        </member>
+        <member name="M:Shared.StaticFunctions.ClearClientPageCache">
+            <summary>
+            清除客户端缓存
+            </summary>
+        </member>
+        <member name="M:Shared.StaticFunctions.ServerRequest(System.String,System.String,System.String,System.String)">
+            <summary>
+            执行服务器端GET/POST操作
+            </summary>
+            <param name="url">地址</param>
+            <param name="data">参数</param>
+            <param name="method">请求方法</param>
+            <param name="charset">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetUnixTimeStamp(System.DateTime)">
+            <summary>
+            获得时间戳字符串
+            </summary>
+            <param name="dt">当前时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GenerateRandom(System.Int32)">
+            <summary>
+            随机获取0-9a-z随机数
+            </summary>
+            <param name="Length">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GenerateRandom(System.Int32,System.Int32)">
+            <summary>
+            随机获取0-9a-z随机数
+            </summary>
+            <param name="chrScopeLength">0-9-z取前几个字符做随机</param>
+            <param name="Length">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.CreateFile(System.String,System.Byte[])">
+            <summary>
+            根据字节流生成文件
+            </summary>
+            <param name="filePath">目标文件路径</param>
+            <param name="fileContent">文件内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.OutPutFileInResponse(System.String,System.Byte[],System.Text.Encoding)">
+            <summary>
+            在当前流输出文件
+            </summary>
+            <param name="attachmentName">附件名称</param>
+            <param name="Content">内容</param>
+            <param name="encoding">编码</param>
+        </member>
+        <member name="M:Shared.StaticFunctions.WriteStringToFile(System.String,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            将字符串写入文件
+            </summary>
+            <param name="filePath">目标文件路径</param>
+            <param name="content">文件内容</param>
+            <param name="append">是否追加</param>
+            <param name="charset">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.WriteStringToFileDoNotThrowEx(System.String,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            将字符串写入文件，写失败时，不抛出异常
+            </summary>
+            <param name="filePath">目标文件路径</param>
+            <param name="content">文件内容</param>
+            <param name="append">是否追加</param>
+            <param name="charset">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetFileByte(System.String)">
+            <summary>
+            获得文件二进制
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetFileString(System.String,System.Text.Encoding)">
+            <summary>
+            读取文件中的字符串
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <param name="charset">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.ClearServerCache">
+            <summary>
+            清空服务器缓存
+            </summary>
+        </member>
+        <member name="M:Shared.StaticFunctions.RemoveServerCache(System.String)">
+            <summary>
+            移除一个缓存项目
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetPhyPath(System.String)">
+            <summary>
+            根据传入的路径，返回物理路径，可以传入绝对或者是相对路径。
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.CreateObject(System.String,System.String,System.String)">
+            <summary>
+            利用反射读取类型
+            </summary>
+            <param name="classNamespace">类名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StaticFunctions.GetRandomSeed">
+            <summary>
+            获取随机种子
+            </summary>
+            <returns>随机种子</returns>
+        </member>
+        <member name="P:Shared.StaticFunctions.IsDebugIP">
+            <summary>
+            是否是调试的IP
+            </summary>
+        </member>
+        <member name="M:Shared.HTMLCheck.IsCanSingleTagName(System.String@)">
+            <summary>
+            能作为自结束标签使用的标签名
+            </summary>
+            <param name="tagName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HTMLCheck.Check(System.String,Shared.ErrPosition@)">
+            <summary>
+            检测
+            </summary>
+            <param name="html"></param>
+            <param name="errPos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsGuid(System.String)">
+            <summary>
+            是否是GUID
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsMcode(System.String)">
+            <summary>
+            判断该字符串是否16位内的机器码
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsKey(System.String)">
+            <summary>
+            判断是否是合法KEY(数字字母下划线)
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsParId(System.String)">
+            <summary>
+            判断是否是合法的6位数商户ID
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsParId(System.String,System.Int32)">
+            <summary>
+            判断是否是合法的商户ID
+            </summary>
+            <param name="input"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsUserName(System.String)">
+            <summary>
+            判断是否是合法用户名
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsQQ(System.String)">
+            <summary>
+            判断是否是合法的QQ号码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsNumber(System.String)">
+            <summary>
+            判断是否是大于0的整数
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsNumber(System.String,System.Boolean)">
+            <summary>
+            是否是数字
+            </summary>
+            <param name="input"></param>
+            <param name="fs">是否可以是负数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsTel(System.String)">
+            <summary>
+            判断是否是7位到13位数字或-
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsDateTime(System.String)">
+            <summary>
+            判断是否是合法日期
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.ExistsSQLKeyChar(System.String)">
+            <summary>
+            是否存在SQLSERVER关键符号,[ 单引号,空格 ]
+            </summary>
+            <param name="recormend"></param>
+            <returns>true: 存在  false : 不存在 </returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsPassWord(System.String,System.Boolean)">
+            <summary>
+            判断是否是合法的密码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsEmail(System.String)">
+            <summary>
+            判断是否是合法的Email
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <!-- 对于成员“M:Shared.StringExtend.IsPostCode(System.String)”忽略有格式错误的 XML 注释 -->
+        <member name="M:Shared.StringExtend.IsMobilPhone(System.String)">
+            <summary>
+            是否是手机号码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsTelPhone(System.String)">
+            <summary>
+            是否是电话号码  格式  区号-电话号码  或者是 7-8位电话号码 或者是 区号 空格 7-8位电话号码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsEmpty(System.String)">
+            <summary>
+            是否为空,包括null,空字符串
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.IsNotEmpty(System.String)">
+            <summary>
+            是否不为空,包括null,空字符串
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <!-- 对于成员“M:Shared.StringExtend.HTMLClear(System.String,System.Boolean)”忽略有格式错误的 XML 注释 -->
+        <member name="M:Shared.StringExtend.HTMLClearCanSaveCrlf(System.String,System.Boolean)">
+            <summary>
+            过滤HTML标签,并可选择是否保留换行标记
+            </summary>
+            <param name="htmlCode"></param>
+            <param name="saveCrlf">是否保留换行标记</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.HtmlEncode(System.String)">
+            <summary>
+            转换为HTML编码字符串
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.HtmlDecode(System.String)">
+             <summary>
+            HTML编码字符串转换为已解码字符串
+             </summary>
+             <param name="str"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.DesEncrypt(System.String)">
+            <summary>
+            DES加密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.DesDecrypt(System.String)">
+            <summary>
+            DES解密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.DESEncryptWithCBCZeros(System.String,System.String)">
+            <summary>   
+            DES加密方法，用UTF8编码
+            </summary>   
+            <param name="inBytes">待加密数组</param>   
+            <param name="keyBytes">key数组</param>   
+            <param name="ivBytes">iv数组</param>   
+            <returns>加密完的数组</returns>   
+        </member>
+        <member name="M:Shared.StringExtend.DESEncryptWithCBCZeros(System.String,System.String,System.Text.Encoding)">
+            <summary>   
+            DES加密方法   
+            </summary>   
+            <param name="inBytes">待加密数组</param>   
+            <param name="keyBytes">key数组</param>   
+            <param name="ivBytes">iv数组</param>   
+            <returns>加密完的数组</returns>   
+        </member>
+        <member name="M:Shared.StringExtend.DESDecryptWithCBCZeros(System.String,System.String)">
+            <summary>   
+            DES解密方法，用UTF8编码
+            </summary>   
+            <param name="inBytes">待解密数组</param>   
+            <param name="keyBytes">key数组</param>   
+            <param name="ivBytes">iv数组</param>   
+            <returns>解密完的数组</returns>   
+        </member>
+        <member name="M:Shared.StringExtend.DESDecryptWithCBCZeros(System.String,System.String,System.Text.Encoding)">
+            <summary>   
+            DES解密方法
+            </summary>   
+            <param name="inBytes">待解密数组</param>   
+            <param name="keyBytes">key数组</param>   
+            <param name="ivBytes">iv数组</param>   
+            <returns>解密完的数组</returns>   
+        </member>
+        <member name="M:Shared.StringExtend.MD5(System.String)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.UrlEncode(System.String)">
+            <summary>
+            URL加密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.UrlDecode(System.String)">
+            <summary>
+            URL解密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.UrlEncode(System.String,System.Text.Encoding)">
+            <summary>
+            URL编码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.UrlDecode(System.String,System.Text.Encoding)">
+            <summary>
+            URL解码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.BlowFishEncryptDep(System.String,System.String)">
+            <summary>
+            BlowFish加密,站点bin目录下需要CommonWebDll_New.dll,并且站点应用程序需要开启32位
+            推荐使用BBX64下的BlowFishEncrypt(站点应用程序使用64位)
+            </summary>
+            <param name="input"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.BlowFishDecryptDep(System.String,System.String)">
+            <summary>
+            BlowFish解密,站点bin目录下需要CommonWebDll_New.dll,并且站点应用程序需要开启32位
+            推荐使用BBX64下的BlowFishDecrypt(站点应用程序使用64位)
+            </summary>
+            <param name="input"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.Base64Encode(System.String,System.Text.Encoding)">
+            <summary> 
+            Base64加密,失败会抛错
+            </summary> 
+            <param name="codeName">加密采用的编码方式</param> 
+            <param name="source">待加密的明文</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:Shared.StringExtend.Base64Encode(System.String)">
+            <summary> 
+            Base64加密,失败会抛错,采用utf8编码方式加密 
+            </summary> 
+            <param name="source">待加密的明文</param> 
+            <returns>加密后的字符串</returns> 
+        </member>
+        <member name="M:Shared.StringExtend.Base64Decode(System.String,System.Text.Encoding)">
+            <summary> 
+            Base64解密,失败会抛错
+            </summary> 
+            <param name="codeName">解密采用的编码方式，注意和加密时采用的方式一致</param> 
+            <param name="result">待解密的密文</param> 
+            <returns>解密后的字符串</returns> 
+        </member>
+        <member name="M:Shared.StringExtend.Base64Decode(System.String)">
+            <summary> 
+            Base64解密,失败会抛错,采用utf8编码方式解密 
+            </summary> 
+            <param name="result">待解密的密文</param> 
+            <returns>解密后的字符串</returns> 
+        </member>
+        <member name="M:Shared.StringExtend.UrlAppendParam(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            [已废弃,请使用AppURLQuering]为url字符串后面直接附加参数
+            </summary>
+            <param name="url"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="urlEncode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetURLQueryStr(System.String,System.String@)">
+            <summary>
+            获取URL的参数部分和无参数部分(不带问号)
+            </summary>
+            <param name="url"></param>
+            <param name="noQueryUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.AppURLQuering(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            给URL附加查询参数
+            </summary>
+            <param name="url"></param>
+            <param name="paName"></param>
+            <param name="paVal"></param>
+            <param name="encode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetApplicationURL(System.String)">
+            <summary>
+            将相对URL转为基于根目录的URL(如果有虚拟目录将包含),方便任何位置可以直接定位到
+            <para/>如根目录下~/Login.aspx=>/Login.aspx
+            <para/>如BBX虚拟目录下~/Login.aspx=>/BBX/Login.aspx
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.TrimEx(System.String)">
+            <summary>
+            前后去空格,如果为null返回string.Empty
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetLocalRelativePath(System.String,System.String)">
+            <summary>
+            本地路径+本地相对路径得到新的本地路径
+            </summary>
+            <param name="path"></param>
+            <param name="relativePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetUrlRelativePath(System.String,System.String)">
+            <summary>
+            完整url+相对路径得到新的url
+            </summary>
+            <param name="url"></param>
+            <param name="relativeUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetUrlRelativePath(System.Uri,System.String)">
+            <summary>
+            完整url+相对路径得到新的url
+            </summary>
+            <param name="url"></param>
+            <param name="relativeUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetQueryString(System.String)">
+            <summary>
+            将字符串转换成名值对应
+            </summary>
+            <param name="paramsString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.GetQueryString(System.String,System.Text.Encoding)">
+            <summary>
+            将字符串转换成名值对应
+            </summary>
+            <param name="paramsString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.DeserializeObject(System.String)">
+            <summary>
+            从字符串中序列化对象(和SerializeToString对应),出错会抛出
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.DeserializeObjectFromFile(System.String)">
+            <summary>
+            从文件中序列化对象(和SerializeToFile对应),出错会抛出
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.Repeat(System.String,System.Int32)">
+            <summary>
+            自动重复
+            </summary>
+            <param name="inp"></param>
+            <param name="count">重复的次数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.FormatToJs(System.String)">
+            <summary>
+            将字符串格式化为js字符串格式(即:转义反斜杠,单引号,双引号)<para />
+            与FormatToJsStr相同,存在是为了兼容旧版本的调用
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.FormatToJsStr(System.String)">
+            <summary>
+            将字符串格式化为js字符串格式(即:转义反斜杠,单引号,双引号)
+            </summary>
+            <param name="inp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.FormatToSqlLikeStr(System.String)">
+            <summary>
+            将字符串格式化为SQL语句中的like部分(将\_%三个字符转义)
+            </summary>
+            <param name="inp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.StringExtend.FormatStr(System.String,System.Object[])">
+            <summary>
+            格式化字符串,{0},{2}...
+            </summary>
+            <param name="vals">需要替换格式换中的标志的值(按传入顺序替换:{0},{1}...)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PageExtend.FormatStrSingle(System.String)">
+            <summary>
+            格式化单引号的字符串
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PageExtend.AlertAndRedirectBeforePageLoad(System.Web.UI.Page,System.String,System.String)">
+            <summary>
+            弹出消息 后,页面跳转
+            </summary>
+            <param name="page"></param>
+            <param name="msg"></param>
+            <param name="url"></param>
+        </member>
+        <member name="M:Shared.PageExtend.AlertAndCloseBeforePageLoad(System.Web.UI.Page,System.String)">
+            <summary>
+            弹出消息 后,页面关闭
+            </summary>
+            <param name="page"></param>
+            <param name="msg"></param>
+            <param name="url"></param>
+        </member>
+        <member name="M:Shared.PageExtend.AlertAndEnd(System.Web.UI.Page,System.String)">
+            <summary>
+            弹出消息 
+            </summary>
+            <param name="page"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Shared.PageExtend.RunJs(System.Web.UI.Page,System.String)">
+            <summary>
+            运行JS代码，代码不需要添加script 标签
+            </summary>
+            <param name="page"></param>
+            <param name="js"></param>
+        </member>
+        <member name="M:Shared.PageExtend.GetUrlReplaceQuerystring(System.Web.UI.Page,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            替换部分参数，返回替换参数后的地址
+            </summary>
+            <param name="page"></param>
+            <param name="toUpdateQueryString"></param>
+        </member>
+        <member name="M:Shared.PageExtend.AlertAndBackBeforePageLoad(System.Web.UI.Page,System.String)">
+            <summary>
+            弹出消息 后,页面返回,会调用Response.End()
+            </summary>
+            <param name="page"></param>
+            <param name="msg"></param>
+            <param name="url"></param>
+        </member>
+        <member name="M:Shared.PageExtend.RenderControl(System.Web.UI.Control)">
+            <summary>
+            将控件直接输出HTML
+            </summary>
+            <param name="crl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.VCBlowfish.VCCallBack(System.String)">
+            <summary>
+            VC插件回调函数
+            </summary>
+        </member>
+        <member name="P:Shared.VCBlowfish.str">
+            <summary>
+            加解密字符串
+            </summary>
+        </member>
+        <member name="P:Shared.VCBlowfish.key">
+            <summary>
+            加解密密钥
+            </summary>
+        </member>
+        <member name="P:Shared.VCBlowfish.BlowfishResult">
+            <summary>
+            加解密结果
+            </summary>
+        </member>
+        <member name="T:Shared.VCBlowfish.CallBack">
+            <summary>
+            定义委托函数类型,用于vc回调 
+            </summary>
+            <param name="returnValue"></param>
+        </member>
+        <member name="M:Shared.NumberExtend.ToDecimalString(System.Double)">
+            <summary>
+            按小数原样输出
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.NumberExtend.ToDecimalString(System.Single)">
+            <summary>
+            按小数原样输出
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.GetAppSettings.GetSettings(System.String,System.Boolean)">
+            <summary>
+            取得配置项
+            </summary>
+            <param name="filedName">字段</param>
+            <param name="checkIsNull">是否判断</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.GetAppSettings.GetSettings(System.String)">
+            <summary>
+            取得配置项
+            </summary>
+            <param name="filedName">字段名</param>
+            <returns>该字段的值没有的话，返回空字符串</returns>
+        </member>
+        <member name="M:Shared.GetAppSettings.GetLogInterfaceUrl">
+            <summary>
+            是否要记录用户访问接口的URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.GetAppSettings.IsLocalDebugType">
+            <summary>
+            是否是本地调试模式,调试模式时，接口输出的值不加密
+            </summary>
+            <returns>是否是本地调试模式</returns>
+        </member>
+        <member name="T:Shared.EnumHelper`1">
+            <summary>
+            枚举工具类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Shared.EnumHelper`1.GetAllItem">
+            <summary>
+            获取所有枚举
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.EnumHelper`1.GetAllEnumItem">
+            <summary>
+            获取所有枚举和对应的属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.EnumHelper`1.AllItemToListItem">
+            <summary>
+            获取枚举的中文文本(Text)和枚举中文值(Value)映射的下拉菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.EnumHelper">
+            <summary>
+            枚举工具类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Shared.EnumHelper.AllItemToListItem(System.Enum)">
+            <summary>
+            [已废弃,请使用EnumHelper&lt;T&gt;.AllItemToListItem()]获取所有枚举和对应的属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.EnumHelper.GetCustomAttribute``1(System.Enum)">
+            <summary> 
+            获取枚举项的Attribute 
+            </summary> 
+            <typeparam name="T">自定义的Attribute</typeparam> 
+            <param name="source">枚举</param> 
+            <returns>返回枚举,否则返回null</returns> 
+        </member>
+        <member name="M:Shared.EnumHelper.GetCustomAttribute(System.Enum,System.Type,System.Type)">
+            <summary> 
+            获取枚举项的Attribute 
+            </summary> 
+            <typeparam name="T">自定义的Attribute</typeparam> 
+            <param name="source">枚举</param> 
+            <returns>返回枚举,否则返回null</returns> 
+        </member>
+        <member name="M:Shared.EnumHelper.GetEnumAttr(System.Enum)">
+            <summary> 
+            获取枚举项的EnumAttr
+            </summary> 
+            <param name="source">枚举</param> 
+            <returns>返回枚举,否则返回null</returns> 
+        </member>
+        <member name="M:Shared.EnumHelper.GetEnumItem``1(System.Enum)">
+            <summary> 
+            获取枚举项的EnumItem
+            </summary> 
+            <param name="source">枚举</param> 
+            <returns>返回枚举,否则返回null</returns> 
+        </member>
+        <member name="M:Shared.EnumHelper.ParseEnum``1(System.String)">
+            <summary>
+            根据名字解析为枚举,同时支持枚举值转为枚举
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.EnumHelper.IsEnumEmpty(System.Object)">
+            <summary>
+            是否枚举为空
+            </summary>
+            <param name="enu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.EnumHelper.GetEnum``1(System.Object)">
+            <summary>
+            强制转换为枚举类型,如果要用名字解析,请用ParseEnum
+            </summary>
+            <param name="enu"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.EnumAttr">
+            <summary>
+            枚举的属性
+            </summary>
+        </member>
+        <member name="P:Shared.EnumAttr.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Shared.EnumAttr.Desc">
+            <summary>
+            说明字符串(比Text长)
+            </summary>
+        </member>
+        <member name="T:Shared.EnumItem`1">
+            <summary>
+            枚举项(包括枚举和对应的属性)
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Shared.EnumItem`1.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="T:Shared.SQLSuperPager">
+            <summary>
+            超级SQL分页 v2.0
+            </summary>
+        </member>
+        <member name="M:Shared.SQLSuperPager.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="tableName">单纯的主表名</param>
+            <param name="aliasTName">如果有多表连接,那么该项就作为别名,无可为空</param>
+            <param name="primaryKey">主表主键名</param>
+            <param name="fromSqlApp">多表连接的语句段,将放在"from tableName 别名 "的后方,无可为空</param>
+            <param name="whereSql">条件语句,无需where关键字</param>
+            <param name="orderBySql">排序语句块,多表连接时,支持多表多字段排序</param>
+        </member>
+        <member name="T:Shared.INIManage">
+            <summary>
+            [貌似已废弃]
+            
+            INIManage 的摘要说明
+            在http://www.allapi.net/ 上发现了一个VB.NET的INI文件操作类，下载了看了看，顺手改成了C#版的
+            你可以把它编译成dll在winform或webform中引用，也可以直接把代码拷到项目中使用
+            我没有进行逐项测试，所以可能有不对的地方，请酌情修改
+            --------------丛兴滋(cncxz) 2005-08-23
+            
+            </summary>
+        </member>
+        <member name="T:Shared.HttpAccessAsynCallBack">
+            <summary>
+            HTTP请求的回调
+            </summary>
+            <param name="response">流读取器,如果请求出错,本值为null</param>
+            <param name="responseCookies">返回新的cookie</param>
+            <param name="err">如果请求有错误的话,返回该错误,否则为null</param>
+            <param name="evData">自定义用的数据</param>
+        </member>
+        <member name="T:Shared.HttpAccessHelper">
+            <summary>
+            HTTP访问工具类
+            </summary>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpGetResponse(System.String,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.Net.CookieCollection@)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="responseCookies">得到的cookie集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpGetResponse(System.String,System.Text.Encoding,System.Int32)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpGetResponseStream(System.String,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.Net.CookieCollection@)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="responseCookies">得到的cookie集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpGetResponseStream(System.String,System.Text.Encoding,System.Int32)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpGetResponseText(System.String,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.Net.CookieCollection@)">
+            <summary>
+            Http模拟请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="responseCookies">得到的cookie集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpGetResponseText(System.String,System.Text.Encoding,System.Int32)">
+            <summary>
+            Http模拟请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.AsynGet(System.String,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.ComponentModel.ISynchronizeInvoke,Shared.HttpAccessAsynCallBack,System.Object)">
+            <summary>
+            异步请求HTTP GET
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="invokeObject">回调函数的调用对象</param>
+            <param name="callBackHandle">回调</param>
+            <param name="evData">回调附加的传递参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostRequest(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32,System.Net.CookieCollection)">
+            <summary>
+            POST的基类,获取HttpWebRequest
+            </summary>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostResponse(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器,需要外部关闭
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostResponse(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.Net.CookieCollection@)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器,带Cookies,需要外部关闭
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="responseCookies">得到的cookie集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostResponseStream(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器,需要外部关闭
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostResponseStream(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.Net.CookieCollection@)">
+            <summary>
+            Http模拟请求的基础实现方法,返回流读取器,带Cookies,需要外部关闭
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="responseCookies">得到的cookie集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostResponseText(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32)">
+            <summary>
+            Http模拟请求的基础实现方法
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetHttpPostResponseText(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.Net.CookieCollection@)">
+            <summary>
+            Http模拟请求的基础实现方法,带Cookies
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="responseCookies">得到的cookie集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.AsynPost(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Text.Encoding,System.Int32,System.Net.CookieCollection,System.ComponentModel.ISynchronizeInvoke,Shared.HttpAccessAsynCallBack,System.Object)">
+            <summary>
+            异步请求HTTP POST
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">普通表单项(非二进制)</param>
+            <param name="byteData">二进制数据(通常指附件)</param>
+            <param name="byteDataFileNames">二进制数据对应的文件名(通常指附件)</param>
+            <param name="isGZip">是否压缩数据(只针对二进制而言)</param>
+            <param name="dataEncoding">发送和读取数据的编码</param>
+            <param name="timeoutMillisecond">超时时间(单位:毫秒)</param>
+            <param name="requestCookies">提交的cookie集合</param>
+            <param name="invokeObject">回调函数的调用对象</param>
+            <param name="callBackHandle">回调</param>
+            <param name="evData">回调附加的传递参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GZipStreamCompress(System.IO.Stream,System.Byte[],System.Boolean)">
+            <summary>
+            压缩二进制并写入到流中,确保该流是打开状态的,写完后该流还是打开状态
+            </summary>
+            <param name="writeStream">压缩后的数据,写入该流</param>
+            <param name="data">压缩二进制数据</param>
+            <param name="leaveOpen">压缩等级</param>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GZipStreamCompress(System.IO.Stream,System.Byte[])">
+            <summary>
+            压缩二进制并写入到流中,确保该流是打开状态的,写完后该流还是打开状态
+            </summary>
+            <param name="writeStream">压缩后的数据,写入该流</param>
+            <param name="data"></param>
+        </member>
+        <member name="M:Shared.HttpAccessHelper.GetCookiesByHeaderSetCookie(System.Net.HttpWebResponse)">
+            <summary>
+            从响应中获取响应的cookie
+            </summary>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PubFunctions.WriteLog(System.String,System.String)">
+            <summary>
+            取得单点登录COOKIE中的用户名和用户ID
+            </summary>
+            <param name="userId"></param>
+            <param name="userName"></param>
+        </member>
+        <member name="M:Shared.PubFunctions.GetUserIp">
+            <summary>
+            取得用户IP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PubFunctions.GetUserCookie(System.String)">
+            <summary>
+            读取COOKIE
+            </summary>
+            <param name="cookieName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PubFunctions.SetUserCookie(System.String,System.String)">
+            <summary>
+            设置COOKIE，默认保存时间 120天
+            </summary>
+            <param name="cookieName"></param>
+            <param name="cookieValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PubFunctions.SetUserCookie(System.String,System.String,System.DateTime)">
+            <summary>
+            设置COOKIE
+            </summary>
+            <param name="cookieName"></param>
+            <param name="cookieValue"></param>
+            <param name="expires"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.PubFunctions.ClearUserCookie(System.String,System.String)">
+            <summary>
+            删除COOKIE
+            </summary>
+            <param name="cookieName"></param>
+        </member>
+        <member name="M:Shared.PubFunctions.ClearClientPageCache">
+            <summary>
+            清除客户端缓存
+            </summary>
+        </member>
+        <member name="M:Shared.PubFunctions.ReadFile(System.String,System.String)">
+            <summary>
+            如果文件存在，读取文件，否则返回空字符串
+            </summary>
+            <param name="fileName"></param>
+            <param name="charSet"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.SiteUtility">
+            <summary>
+            站点的公用方法
+            </summary>
+        </member>
+        <member name="M:Shared.SiteUtility.setLoginMsg(System.Int32,System.String)">
+            <summary>
+            设置登录信息
+            </summary>
+            <param name="uid">用户ID</param>
+            <param name="uname">用户名</param>
+        </member>
+        <member name="M:Shared.SiteUtility.GetUserId">
+            <summary>
+            [单点登录]取用户ID,如果没有登录返回0
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.GetUserName">
+            <summary>
+            [单点登录]获取当前登录用户的用户名,为空表示未登录或登录失败
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.Logout">
+            <summary>
+            用户退出登录
+            </summary>
+        </member>
+        <member name="M:Shared.SiteUtility.UCLoginAndSetCookie(System.String,System.String,System.Int32@,System.Int32@)">
+            <summary>
+            用户中心登录并设置cookie,能登录返回true,不能登录返回false(用户名或密码错误,账户被冻结)
+            </summary>
+            <param name="username">用户名</param>
+            <param name="userpwd">密码</param>
+            <param name="iscongeal">输出用户是否被冻结,-1:未知(未通过帐号验证),0:未冻结,1:冻结,只有在验证成功时才会设置帐号是否被冻结</param>
+            <param name="userid">输出,用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.JdbbxUserCenterLogin(System.String,System.String,System.Int32@,System.Int32@)">
+            <summary>
+            调用用户中心的接口,登录
+            </summary>
+            <param name="username"></param>
+            <param name="userpwd"></param>
+            <param name="iscongeal">输出用户是否被冻结,-1:未知(未通过帐号验证),0:未冻结,1:冻结,只有在验证成功时才会设置帐号是否被冻结</param>
+            <param name="userid">输出</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.UserCenterLogin(System.String,System.String,System.Int32@,System.Int32@)">
+            <summary>
+            调用用户中心的接口,登录
+            </summary>
+            <param name="username"></param>
+            <param name="userpwd"></param>
+            <param name="iscongeal">输出用户是否被冻结,-1:未知(未通过帐号验证),0:未冻结,1:冻结,只有在验证成功时才会设置帐号是否被冻结</param>
+            <param name="userid">输出</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.GetUserIp">
+            <summary>
+            取得用户IP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.GetUserCookie(System.String)">
+            <summary>
+            读取COOKIE
+            </summary>
+            <param name="cookieName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.GetUserCookie(System.Web.HttpRequest@,System.String)">
+            <summary>
+            读取COOKIE
+            </summary>
+            <param name="cookieName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.ClearUserCookie(System.String,System.String)">
+            <summary>
+            删除COOKIE
+            </summary>
+            <param name="cookieName"></param>
+        </member>
+        <member name="M:Shared.SiteUtility.SetSingleSignOnCookies(System.Int32,System.String)">
+            <summary>
+            设置单点登录的COOKIE
+            </summary>
+            <param name="userid"></param>
+            <param name="username"></param>
+            <param name="iscongeal">冻结状态,0未冻结,1冻结</param>
+            <param name="timeoutMinutes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.ClearSingleSignOnCookies">
+            <summary>
+            清空单点登录的COOKIE
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SiteUtility.GetSingleSignOnCookies(System.Int32@,System.String@)">
+            <summary>
+            取得单点登录COOKIE中的用户名和用户ID
+            </summary>
+            <param name="userId"></param>
+            <param name="userName"></param>
+        </member>
+        <member name="M:Shared.SiteUtility.GetSingleSignOnCookies(System.Web.HttpRequest@,System.Int32@,System.String@)">
+            <summary>
+            取得单点登录COOKIE中的用户名和用户ID
+            </summary>
+            <param name="userId"></param>
+            <param name="userName"></param>
+        </member>
+        <member name="M:Shared.SiteUtility.ClearClientPageCache">
+            <summary>
+            清除客户端缓存
+            </summary>
+        </member>
+        <member name="P:Shared.SiteUtility.ssodomain">
+            <summary>
+            属性：SSO的DOMAIN值
+            </summary>
+        </member>
+        <member name="M:Shared.SiteLog.LogStr(System.String,System.String)">
+            <summary>
+            记录日志
+            </summary>
+            <param name="vlog">日志内容</param>
+            <param name="dirName">目录名称</param>
+        </member>
+        <member name="T:Shared.NameValueGetModelExtend">
+            <summary>
+            从名值对应表中获取对象(往NameValueCollection中拓展方法)
+            </summary>
+        </member>
+        <member name="M:Shared.NameValueGetModelExtend.GetModel``1(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            从中获取对象
+            </summary>
+            <typeparam name="T">名-值类型,如:Request.Form,Request.QueryString</typeparam>
+            <param name="formatName">属性名格式化为数据name,如表单中提交的为txt_ccName,属性名为Name,那么参数应为"txt_cc{0}"</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.NameValueGetModelExtend.GetModel``1(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            从中获取对象
+            </summary>
+            <typeparam name="T">名-值类型,如:Request.Form,Request.QueryString</typeparam>
+            <param name="formatName">属性名格式化为数据name,如表单中提交的为txt_ccName,属性名为Name,那么参数应为"txt_cc{0}"</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.NameValueGetModelExtend.GetModel``1(System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            从中获取对象
+            </summary>
+            <typeparam name="T">名-值类型,如:Request.Form,Request.QueryString</typeparam>
+            <param name="formatProsName">参考第一个重载,在该基础上,加上每个字段格式化功能,Name:属性名,Value:格式化</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.NameValueGetModelExtend.GetModel``1(System.Collections.Specialized.NameValueCollection,System.Func{System.String,System.String})">
+            <summary>
+            从中获取对象
+            </summary>
+            <typeparam name="T">名-值类型,如:Request.Form,Request.QueryString</typeparam>
+            <param name="formatProNameFunc">参考第一个重载,由本Func来处理格式化属性名.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.NameValueGetModel`1">
+            <summary>
+            从名值对应表中获取对象,实现
+            </summary>
+        </member>
+        <member name="T:Shared.IFileUploadController">
+            <summary>
+            文件上传通用控制接口
+            </summary>
+        </member>
+        <member name="M:Shared.IFileUploadController.GetAllowFileExtensions">
+            <summary>
+            获取允许上传的文件拓展名数组(拓展名包含点"."),返回一个{""}表示所有都允许
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.IFileUploadController.CheckUpload(System.Web.HttpPostedFile,System.Object,System.String@)">
+            <summary>
+            检测上传操作是否通过,返回是否通过
+            </summary>
+            <param name="file">上传的文件对象</param>
+            <param name="modelUnSave">未保存的model对象,内部可以进行路径的相关赋值操作,会被保存,当前对象如果是新增状态,则主键ID为0,如果为编辑则主键ID>0</param>
+            <param name="showMsg">如果有消息需要显示则输出,否则输出string.Empty</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.IFileUploadController.SaveFile(System.Web.HttpPostedFile,System.Object,System.String@)">
+            <summary>
+            保存文件
+            </summary>
+            <param name="file">上传的文件对象</param>
+            <param name="modelSaved">已经保存的model对象,内部如果对model的字段进行修改,需要自行调用BLL的方法保存</param>
+            <param name="showMsg">如果有消息需要显示则输出,否则输出string.Empty</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.IFileUploadController.GetFileURL(System.Object)">
+            <summary>
+            获取文件访问的URL
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.IFileUploadController.GetFilePath(System.Object)">
+            <summary>
+            获取文件的本地路径
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.WinRarHelper.Exists">
+            <summary>
+            是否安装了Winrar
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.WinRarHelper.CompressRAR(System.String,System.String)">
+            <summary>
+            打包成Rar
+            </summary>
+            <param name="patch"></param>
+            <param name="rarPatch"></param>
+            <param name="rarName"></param>
+        </member>
+        <member name="M:Shared.WinRarHelper.CompressRARUpdate(System.String,System.String)">
+            <summary>
+            更新Rar中的文件
+            </summary>
+            <param name="patch"></param>
+            <param name="rarPatch"></param>
+            <param name="rarName"></param>
+        </member>
+        <member name="M:Shared.WinRarHelper.UnCompressRAR(System.String,System.String)">
+            <summary>
+            解压
+            </summary>
+            <param name="unRarPatch"></param>
+            <param name="rarPatch"></param>
+            <param name="rarName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ListExtend.Add(System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.String,System.Object)">
+            <summary>
+            添加一个参数
+            </summary>
+            <param name="parms"></param>
+            <param name="key">键</param>
+            <param name="val">值</param>
+            <returns>参数集合</returns>
+        </member>
+        <!-- 对于成员“M:Shared.ListExtend.Empty``1(System.Collections.Generic.IEnumerable{``0})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Shared.ListExtend.GetTree``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Func{``0,System.String},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            将一个原来的树形结构数据,转化为通用数据格式
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="getTextProFn">i=&gt;i.Text的字段</param>
+            <param name="getValueProFn">i=&gt;i.Value的字段</param>
+            <param name="getChildsProFn">i=&gt;i.子列表字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ListExtend.GetTree``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean},System.Func{``0,System.String},System.Func{``0,System.String},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            将一个原来的树形结构数据,转化为通用数据格式
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="whereFn">筛选每个节点的子列表,可以为null,表示不筛选</param>
+            <param name="getTextProFn">i=&gt;i.Text的字段</param>
+            <param name="getValueProFn">i=&gt;i.Value的字段</param>
+            <param name="getChildsProFn">i=&gt;i.子列表字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ListExtend.AddChildsListItems(System.Collections.Generic.List{System.Web.UI.WebControls.ListItem},System.Collections.Generic.IEnumerable{Shared.TreeItem},System.Boolean,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            递归实现添加树子列表到下拉菜单
+            </summary>
+            <param name="list"></param>
+            <param name="childs"></param>
+            <param name="tabChar"></param>
+            <param name="itemChar"></param>
+            <param name="tabIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ListExtend.ToListItems(System.Collections.Generic.IEnumerable{Shared.TreeItem},System.Boolean,System.String,System.String)">
+            <summary>
+            将树结构映射到下拉菜单中
+            </summary>
+            <param name="tree"></param>
+            <param name="useFullPath">是否使用完整路径</param>
+            <param name="tabChar">没使用完整路径,表示每个子级的缩进.使用完整路径时,表示每个层级之间的分隔符</param>
+            <param name="itemChar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ListExtend.ToDictionary(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            转换
+            </summary>
+            <param name="nvc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.TreeItem">
+            <summary>
+            树结构的通用格式
+            </summary>
+        </member>
+        <member name="P:Shared.TreeItem.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Shared.TreeItem.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Shared.TreeItem.Childs">
+            <summary>
+            子列表
+            </summary>
+        </member>
+        <member name="T:Shared.DESCBCEncry">
+            <summary>
+            DES-CBC加解密
+            </summary>
+        </member>
+        <member name="M:Shared.DESCBCEncry.GetKey(System.String)">
+            <summary>
+            取Key
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.DESCBCEncry.GetEncrypt(System.String,System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="userCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.DESCBCEncry.GetDecrypt(System.String,System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="EnctyptStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SearchIp.#ctor(System.String)">
+            <summary>
+             构造函数
+            </summary>
+            <param name="ipfilePath">纯真IP数据库路径</param>
+        </member>
+        <member name="M:Shared.SearchIp.GetIPLocation(System.String)">
+            <summary>
+             获取指定IP所在地理位置
+            </summary>
+            <param name="strIP">要查询的IP地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SearchIp.IPToLong(System.String)">
+            <summary>
+             将字符串形式的IP转换位long
+            </summary>
+            <param name="strIP"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SearchIp.BlockToArray(System.Byte[])">
+            <summary>
+             将索引区字节块中的起始IP转换成Long数组
+            </summary>
+            <param name="ipBlock"></param>
+        </member>
+        <member name="M:Shared.SearchIp.SearchIP(System.Int64[],System.Int32,System.Int32)">
+            <summary>
+             从IP数组中搜索指定IP并返回其索引
+            </summary>
+            <param name="ipArray">IP数组</param>
+            <param name="start">指定搜索的起始位置</param>
+            <param name="end">指定搜索的结束位置</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SearchIp.ReadIPBlock">
+            <summary>
+             读取IP文件中索引区块
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SearchIp.ReadLongX(System.Int32)">
+            <summary>
+             从IP文件中读取指定字节并转换位long
+            </summary>
+            <param name="bytesCount">需要转换的字节数，主意不要超过8字节</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.SearchIp.ReadString(System.Int32)">
+            <summary>
+             从IP文件中读取字符串
+            </summary>
+            <param name="flag">转向标志</param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.SearchIp.IPLocation">
+            <summary>
+             地理位置,包括国家和地区
+            </summary>
+        </member>
+        <member name="M:Shared.RequestExtend.GetRelativeRootPath(System.Web.HttpRequest)">
+            <summary>
+            使用当前请求路径相对于站点根的目录层级,如:
+            "/a/t.aspx",将得到"../"
+            "/a/b/test.aspx",将得到"../../"
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetApplicationPath(System.Web.HttpRequest)">
+            <summary>
+            获取当前应用程序的虚拟目录,开头没"/",至少有一个目录时结尾有"/"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetApplicationURL(System.Web.HttpRequest)">
+            <summary>
+            获取当前应用程序的根目录URL,结尾有"/"
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetDirPath(System.Web.HttpRequest)">
+            <summary>
+            获取当前请求的目录的虚拟路径,开头没"/",至少有一个目录时结尾有"/"
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetDirPath(System.Web.HttpRequest,System.Boolean)">
+            <summary>
+            获取当前请求的目录的虚拟路径,开头没"/",至少有一个目录时结尾有"/",可以指定是否包含应用程序的虚拟路径部分
+            </summary>
+            <param name="Request"></param>
+            <param name="includeAppPath">是否包含应用程序的虚拟路径部分,如果当前站点放在虚拟目录BBX/下,true:则路径从BBX/A/B/...开始,false则从A/B/...开始</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetFilePath(System.Web.HttpRequest)">
+            <summary>
+            获取当前请求的文件的虚拟路径,开头没"/"
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetFilePath(System.Web.HttpRequest,System.Boolean)">
+            <summary>
+            获取当前请求的文件的虚拟路径,开头没"/",可以指定是否包含应用程序的虚拟路径部分
+            </summary>
+            <param name="Request"></param>
+            <param name="includeAppPath">是否包含应用程序的虚拟路径部分,如果当前站点放在虚拟目录BBX/下,true:则路径从BBX/A/B/...开始,false则从A/B/...开始</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetQ(System.Web.HttpRequest,System.String)">
+            <summary>
+            获取Request.QueryString的值,去空格
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.RequestExtend.GetF(System.Web.HttpRequest,System.String)">
+            <summary>
+            获取Request.Form的值,去空格
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.ISendMail">
+            <summary>
+            发送邮件接口
+            </summary>
+        </member>
+        <member name="M:Shared.ISendMail.SendMail(System.String,System.String,System.String)">
+            <summary>
+             发送邮件 发件人名为配置的邮箱地址
+            </summary>
+            <param name="toEmail">收件人</param>
+            <param name="title">主题</param>
+            <param name="content">内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shared.ISendMail.SendMail(System.String,System.String,System.String,System.String)">
+            <summary>
+             发送邮件，可设置发件人名
+            </summary>
+            <param name="fromName">发件人名</param>
+            <param name="toEmail">收件人</param>
+            <param name="title">主题</param>
+            <param name="content">内容</param>
+            <returns></returns>
+        </member>
+        <member name="T:Shared.NewSendMailBase">
+            <summary>
+            邮件发送基类(无组件)
+            </summary>
+        </member>
+        <member name="M:Shared.NewSendMailBase.#ctor(System.String,System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            发送邮件购造函数
+            </summary>
+            <param name="smtpServer">STMP服务器地址:smtp.163.com</param>
+            <param name="smptAccount">SMTP服务帐号:aaaa</param>
+            <param name="smptPwd">SMTP服务密码:123456</param>
+            <param name="fromMail">发送方邮件地址:aaaa@163.com</param>
+            <param name="encoding">发送主体文本使用的编码</param>
+        </member>
+        <member name="T:Shared.NewSendHiMail">
+            <summary>
+            [无组件]发送邮件(使用hi@jdbbx.com/QQ邮局服务器)
+            </summary>
+        </member>
+        <member name="T:Shared.NewSend163Mail">
+            <summary>
+            [无组件]发送邮件(使用hi_jdbbx@163.com/136邮局服务器)
+            </summary>
+        </member>
+        <member name="T:Shared.Mail">
+            <summary>
+            发送邮件实例类
+            </summary>
+        </member>
+        <member name="M:Shared.Mail.GetSendMailOBJ(System.String)">
+            <summary>
+            取得具体的邮件发送实例
+            </summary>
+            <param name="Email"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

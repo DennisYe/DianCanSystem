@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GateWay.aspx.cs" Inherits="CYJH_OrderSystem.Admin.GateWay" %>

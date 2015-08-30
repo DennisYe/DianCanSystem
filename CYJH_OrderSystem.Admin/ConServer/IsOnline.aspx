@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IsOnline.aspx.cs" Inherits="CYJH_OrderSystem.Admin.ConServer.IsOnline" %>

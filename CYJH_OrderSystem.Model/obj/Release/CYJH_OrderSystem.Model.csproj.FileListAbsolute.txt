@@ -1,0 +1,5 @@
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.Model\bin\CYJH_OrderSystem.Model.dll
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.Model\bin\CYJH_OrderSystem.Model.pdb
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.Model\obj\Release\CYJH_OrderSystem.Model.csprojResolveAssemblyReference.cache
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.Model\obj\Release\CYJH_OrderSystem.Model.dll
+D:\练习\点餐系统\点餐系统website\点餐系统website\CYJH_OrderSystem.Model\obj\Release\CYJH_OrderSystem.Model.pdb

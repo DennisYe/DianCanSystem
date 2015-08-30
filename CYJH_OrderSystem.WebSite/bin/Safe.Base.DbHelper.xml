@@ -1,0 +1,1132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Safe.Base.DbHelper</name>
+    </assembly>
+    <members>
+        <member name="T:Safe.Base.DbHelper.SimplePager">
+            <summary>
+            简单高效分页方法，适用于所有分页，利用主键
+            </summary>
+        </member>
+        <member name="T:Safe.Base.Contract.ISimplePager">
+            <summary>
+            简单的分页语句生成
+            </summary>
+        </member>
+        <member name="M:Safe.Base.Contract.ISimplePager.GetCountSQL(System.String)">
+            <summary>
+            取得获取记录数的查询语句
+            </summary>
+            <param name="where">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.ISimplePager.GetPagerSQL(System.Int32,System.Int32,System.String,System.String,Safe.Base.Contract.SimplePager_Order)">
+            <summary>
+            取得分页的查询语句
+            </summary>
+            <param name="pageindex">页码</param>
+            <param name="pagesize">页大小</param>
+            <param name="fields">查询字段</param>
+            <param name="where">查询条件</param>
+            <param name="order">排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="tableName"></param>
+            <param name="primaryKey"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager.GetPagerSQL(System.Int32,System.Int32,System.String,System.String,Safe.Base.Contract.SimplePager_Order)">
+            <summary>
+            取分页SQL语句
+            </summary>
+            <param name="pageindex">从1开始的页码</param>
+            <param name="pagesize">每页显示的记录数</param>
+            <param name="fields"></param>
+            <param name="where">要包含WHERE</param>
+            <param name="order">排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager.GetCountSQL(System.String)">
+            <summary>
+            要包含WHERE
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Safe.Base.DbHelper.SimplePager.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Safe.Base.DbHelper.SimplePager.PrimaryKey">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="T:Safe.Base.Contract.IDbHelper">
+            <summary>
+            数据库访问
+            </summary>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.GetConnectionString">
+            <summary>
+            取得连接字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.EndConnection">
+            <summary>
+            断开数据库连接
+            </summary>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.EndConnection(Safe.Base.Contract.ECloseTransactionType)">
+            <summary>
+            断开数据库连接
+            </summary>
+            <param name="closeTransactionType"></param>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.SetHandClose(System.Boolean)">
+            <summary>
+            设置为手动关闭连接
+            </summary>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.SetCommandTimeOut(System.TimeSpan)">
+            <summary>
+            设置命令的超时时间
+            </summary>
+            <param name="timeOutSpan"></param>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.TryConnection">
+            <summary>
+            尝试连接数据库,默认尝试3秒(超时时间)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.TryConnection(System.TimeSpan)">
+            <summary>
+            尝试连接数据库,可指定超时时间
+            </summary>
+            <param name="timeOutSpan">超时时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteFillDataSet(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteFillDataSet(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteFillDataSet(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteFillDataTable(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteFillDataTable(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteFillDataTable(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteNonQuery(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteProc(System.String,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程,取得返回值以及输出值！如果需要事务，请在数据库中定义。
+            </summary>
+            <param name="commandText">存储过程名称</param>
+            <param name="useDefalutOutPar">是否附加一个默认的输出值, 参数名称为@returnvalue, 为true时,请确保存储过程中已经定义了 @returnvalue nvarchar(256) out</param>
+            <param name="dataParameters">参数集, 包含输出参数,但不包含返回值的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteProc(System.String,System.Boolean,System.Boolean,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程,取得返回值以及输出值
+            </summary>
+            <param name="commandText">存储过程名称</param>
+            <param name="useDefalutOutPar">是否附加一个默认的输出值, 参数名称为@returnvalue, 为true时,请确保存储过程中已经定义了 @returnvalue nvarchar(256) out</param>
+            <param name="isProcContainTran">存储过程中是否已经创建了事务</param>
+            <param name="withTransaction">是否使用程序创建事务</param>
+            <param name="dataParameters">参数集, 包含输出参数,但不包含返回值的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteReader(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回SqlDataReader，SqlDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteReader(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回IDataReader，IDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteReader(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回IDataReader，IDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启程序事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteScalar(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启程序中的事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.Exists(System.String,System.Data.IDataParameter[])">
+            <summary>
+            以DataReader能否取到一行的方式判断是否存在一条记录
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Contract.IDbHelper.GetMaxId(System.String,System.String)">
+            <summary>
+            取得表中中最大ID
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="fieldName">表示ID的字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:Safe.Base.Contract.ECloseTransactionType">
+            <summary>
+            事务提交类型
+            </summary>
+        </member>
+        <member name="F:Safe.Base.Contract.ECloseTransactionType.Auto">
+            <summary>
+            自动
+            </summary>
+        </member>
+        <member name="F:Safe.Base.Contract.ECloseTransactionType.RollBack">
+            <summary>
+            回滚
+            </summary>
+        </member>
+        <member name="F:Safe.Base.Contract.ECloseTransactionType.Commit">
+            <summary>
+            提交
+            </summary>
+        </member>
+        <member name="F:Safe.Base.Contract.ECloseTransactionType.NoTransaction">
+            <summary>
+            无事务
+            </summary>
+        </member>
+        <member name="T:Safe.Base.Contract.CommandResult">
+            <summary>
+            执行结果
+            </summary>
+        </member>
+        <member name="P:Safe.Base.Contract.CommandResult.NonQuery">
+            <summary>
+            执行存储过程结果中 受影响的行数
+            </summary>
+        </member>
+        <member name="P:Safe.Base.Contract.CommandResult.ReturnValue">
+            <summary>
+            执行存储过程结果中 接收到的返回值
+            </summary>
+        </member>
+        <member name="P:Safe.Base.Contract.CommandResult.OutPutValue">
+            <summary>
+            执行存储过程结果中 输出的值,键区分大小写！
+            </summary>
+        </member>
+        <member name="P:Safe.Base.Contract.CommandResult.ReturnValueObj">
+            <summary>
+            执行存储过程结果中 接收到的返回值的object数据类型
+            </summary>
+        </member>
+        <member name="T:Safe.Base.Contract.ZSQLCStatic">
+            <summary>
+            过滤部分非法请求
+            </summary>
+        </member>
+        <member name="M:Safe.Base.Contract.ZSQLCStatic.CheckText(System.String)">
+            <summary>
+            检查语句是否存在异常
+            </summary>
+            <param name="sqltext"></param>
+        </member>
+        <member name="T:Safe.Base.Contract.SimplePager_Order">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="F:Safe.Base.Contract.SimplePager_Order.ASC">
+            <summary>
+            升序
+            </summary>
+        </member>
+        <member name="F:Safe.Base.Contract.SimplePager_Order.DESC">
+            <summary>
+            降序
+            </summary>
+        </member>
+        <member name="T:Safe.Base.Utility.ModelConvertHelper`1">
+            <summary>
+            用于快速转换数据库对象.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelper`1.ToModels(System.Data.DataTable)">
+            <summary>
+            将DataTable 转为Model, 如果DATATABLE为空，返回Null
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelper`1.ToModel(System.Data.DataTable)">
+            <summary>
+            将DataTable的第一行 转为 Model,如果没数据则返回null
+            </summary>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelper`1.ToModel(System.Data.DataRow)">
+            <summary>
+            将DataRow读取到的一行 转为 Model
+            </summary>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelper`1.ToModels(System.Data.IDataReader)">
+            <summary>
+            将DataReader读取的内容转为Model，结束后不会自动关闭Reader
+            </summary>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelper`1.ToModel(System.Data.IDataRecord)">
+            <summary>
+            将 SqlDataReader 转为Model, 如果 SqlDataReader.read() 有值 ，返回对象，否则返回Null
+            </summary>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelperExtend.ToModels``1(System.Data.DataTable)">
+            <summary>
+            转换为Model的IList
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.Utility.ModelConvertHelperExtend.ToModel``1(System.Data.DataTable)">
+            <summary>
+            转换为Model
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Safe.Base.DbHelper.SimplePager2">
+            <summary>
+            使用ROW_NUMBER进行分页，只适用于SQL2005及以后版本
+            </summary>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager2.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="tableName"></param>
+            <param name="primaryKey"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager2._FormatWhere(System.String)">
+            <summary>
+            格式化where
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager2.GetCountSQL(System.String)">
+            <summary>
+            取总数
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SimplePager2.GetPagerSQL(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            取得分页查询语句
+            </summary>
+            <param name="pageindex"></param>
+            <param name="pagesize">小等于0时取所有</param>
+            <param name="fields"></param>
+            <param name="where"></param>
+            <param name="orderBy"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Safe.Base.DbHelper.SimplePager2.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:SQLPager.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="tableName">单纯的主表名</param>
+            <param name="aliasTName">如果有多表连接,那么该项就作为别名,否则可以为空字符串</param>
+            <param name="primaryKey">主表主键名</param>
+            <param name="fromSqlApp">多表连接的语句段,将放在"from tableName 别名 "的后方</param>
+            <param name="whereSql">条件语句</param>
+            <param name="orderBySql">排序语句块,多表连接时,支持多表多字段排序</param>
+        </member>
+        <member name="M:SQLPager.GetCountSQL">
+            <summary>
+            获得总页数的SQL语句
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SQLPager.GetPagerSql(System.Int32,System.Int32,System.Int64,System.String,System.String)">
+            <summary>
+            获得分页的SQL语句
+            </summary>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">第几页</param>
+            <param name="dataCount">总数</param>
+            <param name="selectColumns">要select的字段列表</param>
+            <returns></returns>
+        </member>
+        <member name="T:Safe.Base.DbHelper.SQLHelper">
+            <summary>
+            MSSQL的数据库访问
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._commandTimeout">
+            <summary>
+            命令的超时时间
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._connString">
+            <summary>
+            连接字串
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._conn">
+            <summary>
+            连接对象
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._dbTran">
+            <summary>
+            事务
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._isErr">
+            <summary>
+            在事务执行过程中,是否出现异常
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._canSetHandClose">
+            <summary>
+            能否设置手动关闭连接
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._autoClose">
+            <summary>
+            是否自动关闭连接
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.SQLHelper._openTranWhenHandClose">
+            <summary>
+            手动关闭连接的情况下,是否需要开启数据库事务
+            </summary>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.TryEndConnection">
+            <summary>
+            尝试关闭连接,如果服务器有设置自动关闭,就自动关闭
+            </summary>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.CloseTransaction(Safe.Base.Contract.ECloseTransactionType)">
+            <summary>
+            关闭事务
+            </summary>
+            <param name="closeTransactionType"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.CreateCommand(System.String,System.Data.CommandType,System.Boolean,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            初始化查询对象
+            </summary>
+            <param name="cmdText">查询语句</param>
+            <param name="cmdType">类型</param>
+            <param name="addReturnValuePar">是否要添加一个返回值参数</param>
+            <param name="addDefalutOutPar">是否要添加默认的OUT参数</param>
+            <param name="sqlpars">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.StartConnection(System.Boolean)">
+            <summary>
+            开始一个连接
+            </summary>
+            <param name="withSqlTransaction">是否开启事务</param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.#ctor(System.String,System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connString">连接字串</param>
+            <param name="canSetHandClose">是否允许设置成手动关闭连接</param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.FromFile(System.String,System.Boolean)">
+            <summary>
+            从文件中读取连接字符串
+            </summary>
+            <param name="fileFullName"></param>
+            <param name="canSetHandClose"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.FromConfigKey(System.String,System.Boolean)">
+            <summary>
+            从配置文件中读取
+            </summary>
+            <param name="appSettingsKey">节点名称</param>
+            <param name="canSetHandClose">是否可设置手动关闭连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.FromConfig(System.Boolean)">
+            <summary>
+            从配置文件中的指定节点读取，节点名称为 dbCfgFileName
+            </summary>
+            <param name="canSetHandClose">是否可设置手动关闭连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.EndConnection">
+            <summary>
+            断开数据库连接
+            </summary> 
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.EndConnection(Safe.Base.Contract.ECloseTransactionType)">
+            <summary>
+            断开数据库连接
+            </summary>
+            <param name="closeTransactionType"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.SetHandClose(System.Boolean)">
+            <summary>
+            设置
+            </summary>
+            <param name="withTransaction"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteFillDataSet(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteFillDataSet(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteFillDataSet(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteFillDataTable(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteFillDataTable(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteFillDataTable(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteNonQuery(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteScalar(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启程序中的事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteProc(System.String,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程,取得返回值以及输出值！如果需要事务，请在数据库中定义。
+            </summary>
+            <param name="commandText">存储过程名称</param>
+            <param name="useDefalutOutPar">是否附加一个默认的输出值, 参数名称为@returnvalue, 为true时,请确保存储过程中已经定义了 @returnvalue nvarchar(256) out</param>
+            <param name="dataParameters">参数集, 包含输出参数,但不包含返回值的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteProc(System.String,System.Boolean,System.Boolean,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程,取得返回值以及输出值
+            </summary>
+            <param name="commandText">存储过程名称</param>
+            <param name="useDefalutOutPar">是否附加一个默认的输出值, 参数名称为@returnvalue, 为true时,请确保存储过程中已经定义了 @returnvalue nvarchar(256) out</param>
+            <param name="isProcContainTran">存储过程中是否已经创建了事务</param>
+            /// <param name="withTransaction">是否用自定义事务</param>
+            <param name="dataParameters">参数集, 包含输出参数,但不包含返回值的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteReader(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回SqlDataReader，SqlDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteReader(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回IDataReader，IDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.ExecuteReader(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回IDataReader，IDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启程序事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.TryConnection">
+            <summary>
+            尝试连接数据库,默认尝试3秒(超时时间)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.Exists(System.String,System.Data.IDataParameter[])">
+            <summary>
+            以DataReader能否取到一行的方式判断是否存在一条记录
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.GetMaxId(System.String,System.String)">
+            <summary>
+            取得表中中最大ID
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="fieldName">表示ID的字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.SetCommandTimeOut(System.TimeSpan)">
+            <summary>
+            设置命令的超时时间
+            </summary>
+            <param name="timeOutSpan"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.TryConnection(System.TimeSpan)">
+            <summary>
+            尝试连接数据库,可指定超时时间
+            </summary>
+            <param name="timeOutSpan">超时时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.SQLHelper.GetConnectionString">
+            <summary>
+            取得连接字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Safe.Base.DbHelper.MYSQLHelper">
+            <summary>
+            MYSQL的数据库连接
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._defaultoutputParName">
+            <summary>
+            默认输出参数
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._returnvalueParName">
+            <summary>
+            默认返回值参数
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._commandTimeout">
+            <summary>
+            命令的超时时间
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._connString">
+            <summary>
+            连接字串
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._conn">
+            <summary>
+            连接对象
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._dbTran">
+            <summary>
+            事务
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._isErr">
+            <summary>
+            在事务执行过程中,是否出现异常
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._canSetHandClose">
+            <summary>
+            能否设置手动关闭连接
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._autoClose">
+            <summary>
+            是否自动关闭连接
+            </summary>
+        </member>
+        <member name="F:Safe.Base.DbHelper.MYSQLHelper._openTranWhenHandClose">
+            <summary>
+            手动关闭连接的情况下,是否需要开启数据库事务
+            </summary>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.TryEndConnection">
+            <summary>
+            尝试关闭连接,如果服务器有设置自动关闭,就自动关闭
+            </summary>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.CloseTransaction(Safe.Base.Contract.ECloseTransactionType)">
+            <summary>
+            关闭事务
+            </summary>
+            <param name="closeTransactionType"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.CreateCommand(System.String,System.Data.CommandType,System.Boolean,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            初始化查询对象
+            </summary>
+            <param name="cmdText">查询语句</param>
+            <param name="cmdType">类型</param>
+            <param name="addReturnValuePar">是否要添加一个返回值参数</param>
+            <param name="addDefalutOutPar">是否要添加默认的OUT参数</param>
+            <param name="sqlpars">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.StartConnection(System.Boolean)">
+            <summary>
+            开始一个连接
+            </summary>
+            <param name="withSqlTransaction">是否开启事务</param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.#ctor(System.String,System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connString">连接字串</param>
+            <param name="canSetHandClose">是否允许设置成手动关闭连接</param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.EndConnection">
+            <summary>
+            结束连接
+            </summary>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.EndConnection(Safe.Base.Contract.ECloseTransactionType)">
+            <summary>
+            结束连接
+            </summary>
+            <param name="closeTransactionType"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.SetHandClose(System.Boolean)">
+            <summary>
+            设置为不自动关闭连接。
+            </summary>
+            <param name="withTransaction"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteFillDataSet(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteFillDataSet(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteFillDataSet(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataSet
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteFillDataTable(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteFillDataTable(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteFillDataTable(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回DataTable
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteNonQuery(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回受影响的行数
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启事务</param>
+            <param name="dataParameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteScalar(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回第一行第一列
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启程序中的事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteProc(System.String,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程,取得返回值以及输出值！如果需要事务，请在数据库中定义。
+            </summary>
+            <param name="commandText">存储过程名称</param>
+            <param name="useDefalutOutPar">是否附加一个默认的输出值, 参数名称为@returnvalue, 为true时,请确保存储过程中已经定义了 @returnvalue nvarchar(256) out</param>
+            <param name="dataParameters">参数集, 包含输出参数,但不包含返回值的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteProc(System.String,System.Boolean,System.Boolean,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程,取得返回值以及输出值
+            </summary>
+            <param name="commandText">存储过程名称</param>
+            <param name="useDefalutOutPar">是否附加一个默认的输出值, 参数名称为@returnvalue, 为true时,请确保存储过程中已经定义了 @returnvalue nvarchar(256) out</param>
+            <param name="isProcContainTran">存储过程中是否已经创建了事务</param>
+            /// <param name="withTransaction">是否用自定义事务</param>
+            <param name="dataParameters">参数集, 包含输出参数,但不包含返回值的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteReader(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回SqlDataReader，SqlDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteReader(System.String,System.Data.CommandType,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回IDataReader，IDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.ExecuteReader(System.String,System.Data.CommandType,System.Boolean,System.Data.IDataParameter[])">
+            <summary>
+            执行语句返回IDataReader，IDataReader关闭时，Conn会自动关闭
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="cmdType">命令类型</param>
+            <param name="withTransaction">是否开启程序事务</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.TryConnection">
+            <summary>
+            尝试连接数据库,默认尝试3秒(超时时间)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.Exists(System.String,System.Data.IDataParameter[])">
+            <summary>
+            以DataReader能否取到一行的方式判断是否存在一条记录
+            </summary>
+            <param name="commandText">查询语句</param>
+            <param name="dataParameters">参数集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.GetMaxId(System.String,System.String)">
+            <summary>
+            取得表中中最大ID
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="fieldName">表示ID的字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.SetCommandTimeOut(System.TimeSpan)">
+            <summary>
+            设置命令的超时时间
+            </summary>
+            <param name="timeOutSpan"></param>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.TryConnection(System.TimeSpan)">
+            <summary>
+            尝试连接数据库,可指定超时时间
+            </summary>
+            <param name="timeOutSpan">超时时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.MYSQLHelper.GetConnectionString">
+            <summary>
+            取得连接字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.ConnEncrypt.DecryptFile(System.String)">
+            <summary>
+            从文件中读取信息，并解密
+            </summary>
+            <param name="fileFullName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.ConnEncrypt.DataDecrypt(System.Byte[],System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="data"></param>
+            <param name="pass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Safe.Base.DbHelper.ConnEncrypt.GetKey(System.Byte[],System.Int32)">
+            <summary>
+            打乱密码
+            </summary>
+            <param name="pass">密码</param>
+            <param name="kLen">密码箱长度</param>
+            <returns>打乱后的密码</returns>
+        </member>
+    </members>
+</doc>
