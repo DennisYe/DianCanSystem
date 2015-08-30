@@ -19,7 +19,7 @@ namespace CYJH_OrderSystem.DAL {
             string sqlCmd = "select * from Menu";
             List<Menu> menuList=new List<Menu>();
 
-            if (_sqlHelp.TryConnection()) {
+            if (_sqlHelp.TryConnection()) { 
                 DataTable menuResult = _sqlHelp.ExecuteFillDataTable(sqlCmd);
                 for (int i=0;i<menuResult.Rows.Count;i++) {
                     DataRow dr=menuResult.Rows[i];
