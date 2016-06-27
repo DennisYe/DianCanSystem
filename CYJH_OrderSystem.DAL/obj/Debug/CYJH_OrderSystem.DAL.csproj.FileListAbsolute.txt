@@ -27,3 +27,10 @@ F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem
 F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.DAL\obj\Debug\ResolveAssemblyReference.cache
 F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.DAL\obj\Debug\CYJH_OrderSystem.DAL.dll
 F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.DAL\obj\Debug\CYJH_OrderSystem.DAL.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\bin\CYJH_OrderSystem.DAL.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\bin\CYJH_OrderSystem.DAL.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\bin\CYJH_OrderSystem.Model.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\bin\CYJH_OrderSystem.Model.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\obj\Debug\CYJH_OrderSystem.DAL.csprojResolveAssemblyReference.cache
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\obj\Debug\CYJH_OrderSystem.DAL.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.DAL\obj\Debug\CYJH_OrderSystem.DAL.pdb

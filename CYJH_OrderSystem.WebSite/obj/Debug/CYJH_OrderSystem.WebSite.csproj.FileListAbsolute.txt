@@ -117,3 +117,41 @@ F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem
 F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.WebSite\obj\Debug\ResolveAssemblyReference.cache
 F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.WebSite\obj\Debug\CYJH_OrderSystem.WebSite.dll
 F:\professional C#\CYJH\点餐系统website\点餐系统website\CYJH_OrderSystem.WebSite\obj\Debug\CYJH_OrderSystem.WebSite.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.WebSite.dll.config
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.WebSite.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.WebSite.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.BLL.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.Model.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\Microsoft.Web.Infrastructure.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\Newtonsoft.Json.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Net.Http.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Net.Http.Formatting.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Net.Http.WebRequest.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Helpers.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Http.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Http.WebHost.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Mvc.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Razor.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.WebPages.Deployment.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.WebPages.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.WebPages.Razor.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.DAL.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\Safe.Base.DbHelper.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.BLL.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.Model.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\Newtonsoft.Json.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Net.Http.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Net.Http.Formatting.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Net.Http.WebRequest.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Helpers.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Http.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Http.WebHost.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Mvc.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.Razor.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.WebPages.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.WebPages.Deployment.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\System.Web.WebPages.Razor.xml
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\bin\CYJH_OrderSystem.DAL.pdb
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\obj\Debug\CYJH_OrderSystem.WebSite.csprojResolveAssemblyReference.cache
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\obj\Debug\CYJH_OrderSystem.WebSite.dll
+D:\CodeRepository\SelfDev\DianCanSystem\CYJH_OrderSystem.WebSite\obj\Debug\CYJH_OrderSystem.WebSite.pdb
