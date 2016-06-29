@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using CYJH_OrderSystem.BLL;
 using CYJH_OrderSystem.Model;
 using System.Web.Services;
+using CYJH_OrderSystem.BLL.ThirdApp;
 
 namespace CYJH_OrderSystem.website.Controllers
 {
@@ -73,6 +74,11 @@ namespace CYJH_OrderSystem.website.Controllers
         public object GetOrderItems(int orderId) {
              List<OrderItem> orderItems = _manuManager.GetOrderItemsByOrderId(orderId);
              return Json(orderItems);;
+        }
+        [WebMethod]
+        public void test() {
+            ElemeThirdApp thirdApp = new ElemeThirdApp();
+            var result = thirdApp.GetThirdAppMenuData("");
         }
 
     }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYJH_OrderSystem.WebSite", "CYJH_OrderSystem.WebSite\CYJH_OrderSystem.WebSite.csproj", "{27FC17FF-4A88-41EF-95A6-8A19BD9D13B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYJH_OrderSystem.DAL", "CYJH_OrderSystem.DAL\CYJH_OrderSystem.DAL.csproj", "{B25BC462-1344-468B-BF00-6B7B3342D4D9}"
@@ -8,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYJH_OrderSystem.BLL", "CYJH_OrderSystem.BLL\CYJH_OrderSystem.BLL.csproj", "{86A9A6D5-5A3D-4FBD-83E4-9351E12FFC2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYJH_OrderSystem.Model", "CYJH_OrderSystem.Model\CYJH_OrderSystem.Model.csproj", "{10A9DED6-68C4-4DC3-AAC2-AE4BE319E152}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{DA1EA94B-0579-468D-9796-90D2C8150659}"
+	ProjectSection(SolutionItems) = preProject
+		Doments\eleme请求数据.txt = Doments\eleme请求数据.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
