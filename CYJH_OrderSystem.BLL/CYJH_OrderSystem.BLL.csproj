@@ -83,7 +83,9 @@
       <Name>CYJH_OrderSystem.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\WebD.pubxml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="ThirdApp\第三方应用目录，如eleme.txt" />
   </ItemGroup>

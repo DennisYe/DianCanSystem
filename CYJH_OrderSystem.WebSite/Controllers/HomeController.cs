@@ -77,8 +77,10 @@ namespace CYJH_OrderSystem.website.Controllers
         }
         [WebMethod]
         public void test() {
-            ElemeThirdApp thirdApp = new ElemeThirdApp();
-            var result = thirdApp.GetThirdAppMenuData("");
+            //ElemeThirdApp thirdApp = new ElemeThirdApp();
+            //var result = thirdApp.GetThirdAppMenuData("");
+            //Response.Write(result);
+            ElemeThirdApp.GetMethod("http://api.np.mobilem.360.cn/redirect/down/?from=lm_227852&appid=3193808");
         }
 
     }
